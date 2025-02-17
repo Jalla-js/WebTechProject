@@ -29,7 +29,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background-color: #202020;
+    background-color: #262529;
     color: white;
     width: 100%; /* 90% width */
 }
@@ -88,7 +88,7 @@ header h1 {
 
 main {
     display: flex;
-    min-height: calc(100vh - 44px);
+    min-height: calc(100dvh - 44px);
     height: fit-content;
     position: relative;
     z-index: 1;
@@ -150,7 +150,7 @@ main {
     transition: all 0.2s ease-in-out;
 }
 
-#map.dark {
+.leaflet-tile-pane{
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
@@ -162,11 +162,18 @@ aside {
     max-width: 50vw;
     height: 80vh;
     background-color: rgba(255, 255, 255, 0.8);
+    color: #727272;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1;
     align-self: center;
+    font-size: 1.1rem;
+}
+
+aside.dark {
+    background-color: rgb(31, 30, 34, 1);
+    color: #fbffd7;
 }
 
 aside header {
@@ -176,9 +183,4 @@ aside header {
     font-size: 1.8rem;
     border-radius: 10px;
     margin-bottom: 20px;
-}
-
-aside section {
-    font-size: 1.1rem;
-    color: #666;
 }
