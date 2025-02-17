@@ -121,7 +121,7 @@ main {
     backdrop-filter: blur(10px);
     border-radius: 10px 10px 0 0;
 }
-
+ 
 .tile:hover {
     background: #444;
     transform: scale(1.01);
