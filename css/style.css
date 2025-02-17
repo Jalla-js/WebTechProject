@@ -154,6 +154,16 @@ main {
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
+.leaflet-control-zoom {
+    display: flex;
+    flex-direction: row-reverse;
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-control-attribution {
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
 aside {
     position: absolute;
     left: 20px;
