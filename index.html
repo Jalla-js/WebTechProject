@@ -5,19 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDGBOX - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <header>
         <h1>SDGBox</h1>
-        <input type="text">
-        <label for=""></label>
-        <div>
+        <input type="checkbox" name="pageCheck" id="pageCheck">
+        <label for="pageCheck"><i class="fa fa-square-caret-down"></i>Pages</label>
+        <div class="dropdown-menu">
+            <a href="#">Home</a>
+            <a href="#">Map</a>
+            <a href="#">Links and Resources</a>
 
         </div>
         <input type="checkbox" name="settingsCheck" id="settingsCheck">
-        <label for="settingsCheck" class="fa fa-cogs"></label>
+        <label for="settingsCheck"><i class="fa fa-cogs"></i></label>
         <div class="dropdown-menu">
             <a href="#">Setting 1</a>
             <a href="#">Setting 2</a>
@@ -25,7 +28,6 @@
         </div>
     </header>
     <main>
-    <div class="circle"></div>
         <div class="dashboard">
             <section class="tile tile1"><header>Content 1</header></section>
             <section class="tile tile2"><header>Content 2</header></section>

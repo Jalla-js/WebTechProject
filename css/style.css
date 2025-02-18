@@ -44,11 +44,11 @@ header h1 {
     color: green;
 }
 
-#settingsCheck {
+#settingsCheck, #pageCheck {
     display: none;
 }
 
-.fa-cogs {
+.fa-cogs, .fa-solid {
     font-size: 1.5rem;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -83,6 +83,9 @@ header h1 {
 }
 
 #settingsCheck:checked~.dropdown-menu {
+    display: block;
+}
+#pageCheck:checked~.dropdown-menu {
     display: block;
 }
 
@@ -150,18 +153,13 @@ main {
     transition: all 0.2s ease-in-out;
 }
 
-.leaflet-tile-pane{
+.leaflet-tile-pane, .leaflet-control-attribution, .leaflet-control-zoom{
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
 .leaflet-control-zoom {
     display: flex;
     flex-direction: row-reverse;
-    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
-}
-
-.leaflet-control-attribution {
-    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
 
 aside {
@@ -171,19 +169,14 @@ aside {
     width: 35%;
     max-width: 50vw;
     height: 80vh;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #727272;
+    background-color: rgb(31, 30, 34, 1);
+    color: #fbffd7;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1;
     align-self: center;
     font-size: 1.1rem;
-}
-
-aside.dark {
-    background-color: rgb(31, 30, 34, 1);
-    color: #fbffd7;
 }
 
 aside header {
