@@ -10,14 +10,20 @@ function initialize() {
     
     var before = null;
     requestAnimationFrame(function animate(now) {
+        if (Math.round(earth.getZoom()<=4)) {
         var c = earth.getPosition();
         var elapsed = before? now - before: 0;
         before = now;
         earth.setCenter([c[0], c[1] + 0.1*(elapsed/30)]);
+        }
+        else {
+            before = null;
+            now=null;
+        }
         requestAnimationFrame(animate);
     });
   }
 
-earth.on('click', function(e) {
+earth.on('dblclick', function(e) {
     window.alert(e.latlng.lat + ', ' + e.latlng.lng);
   });
