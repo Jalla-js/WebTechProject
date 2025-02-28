@@ -11,19 +11,20 @@ body {
     background-color: #fafafa;
     color: #333;
     height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1734784548166-a1ffe07dd7cd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8');
+    background-image: url('https://unpkg.com/three-globe/example/img/earth-day.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
 }
 
+/*
 body {
-    background: linear-gradient(to bottom right, #ffffff, #e6f4ea); /* White to soft green */
+    background: linear-gradient(to bottom right, #ffffff, #e6f4ea); /* White to soft green
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
 }
-
+*/
 header {
     height: 44px;
     display: flex;
