@@ -1,4 +1,4 @@
-<!Doctype html>
+<!--<!Doctype html>
 <head>
   <style> body { margin: 0; } </style>
   <script src="//unpkg.com/globe.gl"></script>
@@ -34,23 +34,583 @@
           });
 
           const world = new Globe(document.getElementById('globeViz'))
-              .globeImageUrl('//unpkg.com/three-globe/example/img/earth-day.jpg')
-              .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+              //.globeImageUrl('//unpkg.com/three-globe/example/img/earth-day.jpg')
+              //.backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+              .globeImageUrl('generated_with_worldmapgenerator.png')
+              .backgroundImageUrl('805180.jpg')
               .lineHoverPrecision(0)
-              .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
+              .polygonsData(countries.features.filter(data => data.properties.ISO_A2 !== 'AQ'))
               .polygonAltitude(0.01)
               .polygonCapColor(feat => getColor(scoreMap.get(feat.properties.ADMIN) || null))
               .polygonSideColor(() => 'rgba(0, 0, 0, 0)')
               .polygonStrokeColor(() => '#111')
-              .polygonLabel(({ properties: d }) => `
-                  <b>${d.ADMIN} (${d.ISO_A2}):</b> <br />
-                  Score: <i>${scoreMap.get(d.ADMIN) ?? 'N/A'}</i>
+              .polygonLabel(({ properties: data }) => `
+                  <b>${data.ADMIN} (${data.ISO_A2}):</b> <br />
+                  Score: <i>${scoreMap.get(data.ADMIN) ?? 'N/A'}</i>
               `)
               .onPolygonHover(hoverD => world
-                  .polygonAltitude(d => d === hoverD ? 0.06 : 0.01)
-                  .polygonCapColor(d => d === hoverD ? 'steelblue' : 'transparent')//getColor(scoreMap.get(d.properties.ADMIN) || null))
+                  .polygonAltitude(data => data === hoverD ? 0.06 : 0.01)
+                  .polygonCapColor(data => data === hoverD ? 'steelblue' : 'transparent')//getColor(scoreMap.get(d.properties.ADMIN) || null))
               )
               .polygonsTransitionDuration(300);
       });
   </script>
 </body>
+-->
+<!--
+<!Doctype html>
+<head>
+  <style> 
+    body { margin: 0; text-align: center; }
+    #controls { position: absolute; top: 10px; left: 10px; z-index: 1000; }
+    button { margin: 5px; padding: 10px; cursor: pointer; }
+  </style>
+  <script src="//unpkg.com/globe.gl"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-levenshtein/2.0.6/levenshtein.min.js"></script> 
+</head>
+
+<body>
+  <div id="controls">
+    <button onclick="changeGlobeTexture()">Change Globe</button>
+    <button onclick="changeBackground()">Change Background</button>
+    <button onclick="updateColors()">Update Colors</button>
+  </div>
+
+  <div id="globeViz"></div>
+
+  <script type="module">
+      import { scaleSequential } from 'https://esm.sh/d3-scale';
+      import { interpolateYlOrRd } from 'https://esm.sh/d3-scale-chromatic';
+
+      const apiUrl = "https://services7.arcgis.com/IyvyFk20mB7Wpc95/arcgis/rest/services/Sustainable_Development_Report_2024_(with_indicators)/FeatureServer/0/query?where=1%3D1&outFields=Overall_Score,Name&outSR=4326&f=json";
+
+      const globeTextures = [
+          'generated_with_worldmapgenerator.png',
+          'earth-day.jpg',
+          'earth-blue-marble.jpg'
+      ];
+      const backgroundImages = [
+          '805180.jpg',
+          'night-sky.png',
+          'space-background.jpg'
+      ];
+      
+      let currentGlobeIndex = 0;
+      let currentBackgroundIndex = 0;
+      let world;
+
+      function getColor(score) {
+          if (score === null) return 'gray';
+          if (score <= 40) return 'red';
+          if (score <= 60) return 'orange';
+          if (score <= 80) return 'yellow';
+          return 'green';
+      }
+
+      function fuzzyMatch(input, possibleMatches) {
+          let bestMatch = null;
+          let bestScore = Infinity;
+          
+          possibleMatches.forEach(name => {
+              let distance = levenshtein.get(input, name);
+              if (distance < bestScore) {
+                  bestScore = distance;
+                  bestMatch = name;
+              }
+          });
+
+          return bestScore <= 3 ? bestMatch : null; 
+      }
+
+      Promise.all([
+          fetch('ne_110m_admin_0_countries.geojson').then(res => res.json()),
+          fetch(apiUrl).then(res => res.json())
+      ]).then(([countries, apiData]) => {
+          const scoreMap = new Map();
+          const countryNames = countries.features.map(f => f.properties.ADMIN);
+
+          apiData.features.forEach(f => {
+              const countryName = f.attributes.Name.trim();
+              let matchedName = countryNames.includes(countryName) ? countryName : fuzzyMatch(countryName, countryNames);
+              if (matchedName) {
+                  scoreMap.set(matchedName, f.attributes.Overall_Score);
+              }
+          });
+
+          world = new Globe(document.getElementById('globeViz'))
+              .globeImageUrl(globeTextures[currentGlobeIndex])
+              .backgroundImageUrl(backgroundImages[currentBackgroundIndex])
+              .lineHoverPrecision(0)
+              .polygonsData(countries.features.filter(data => data.properties.ISO_A2 !== 'AQ'))
+              .polygonAltitude(0.01)
+              .polygonCapColor(feat => getColor(scoreMap.get(feat.properties.ADMIN) || null))
+              .polygonSideColor(() => 'rgba(0, 0, 0, 0)')
+              .polygonStrokeColor(() => '#111')
+              .polygonLabel(({ properties: data }) => `
+                  <b>${data.ADMIN} (${data.ISO_A2}):</b> <br />
+                  Score: <i>${scoreMap.get(data.ADMIN) ?? 'N/A'}</i>
+              `)
+              .onPolygonHover(hoverD => world
+                  .polygonAltitude(data => data === hoverD ? 0.06 : 0.01)
+                  .polygonCapColor(data => 
+                      data === hoverD 
+                      ? 'steelblue' 
+                      : getColor(scoreMap.get(data.properties.ADMIN) || null)
+                  )
+              )
+              .polygonsTransitionDuration(300);
+      });
+
+      window.changeGlobeTexture = function() {
+          currentGlobeIndex = (currentGlobeIndex + 1) % globeTextures.length;
+          world.globeImageUrl(globeTextures[currentGlobeIndex]);
+      };
+
+      window.changeBackground = function() {
+          currentBackgroundIndex = (currentBackgroundIndex + 1) % backgroundImages.length;
+          world.backgroundImageUrl(backgroundImages[currentBackgroundIndex]);
+      };
+
+      window.updateColors = function() {
+          world.polygonsData(world.polygonsData());
+      };
+  </script>
+</body>
+-->
+<!--
+<!Doctype html>
+<head>
+  <style> 
+    body { margin: 0; text-align: center; }
+    #controls { position: absolute; top: 10px; left: 10px; z-index: 1000; }
+    button { margin: 5px; padding: 10px; cursor: pointer; }
+  </style>
+  <script src="//unpkg.com/globe.gl"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-levenshtein/2.0.6/levenshtein.min.js"></script> 
+</head>
+
+<body>
+  <div id="controls">
+    <button onclick="changeGlobeTexture()">Change Globe</button>
+    <button onclick="changeBackground()">Change Background</button>
+    <button onclick="updateColors()">Update Colors</button>
+  </div>
+
+  <div id="globeViz"></div>
+
+  <script type="module">
+      import { scaleSequential } from 'https://esm.sh/d3-scale';
+      import { interpolateYlOrRd } from 'https://esm.sh/d3-scale-chromatic';
+
+      const apiUrl = "https://services7.arcgis.com/IyvyFk20mB7Wpc95/arcgis/rest/services/Sustainable_Development_Report_2024_(with_indicators)/FeatureServer/0/query?where=1%3D1&outFields=Overall_Score,Name&outSR=4326&f=json";
+
+      const globeTextures = [
+          'generated_with_worldmapgenerator.png',
+          'earth-day.jpg',
+          'earth-blue-marble.jpg'
+      ];
+      const backgroundImages = [
+          '805180.jpg',
+          'night-sky.png',
+          'space-background.jpg'
+      ];
+      
+      let currentGlobeIndex = 0;
+      let currentBackgroundIndex = 0;
+      let world = null; // Ensure it's globally defined
+
+      // Manual mappings for common mismatches
+      const manualMappings = {
+          "Russian Federation": "Russia",
+          "United States": "United States of America",
+          "Democratic Republic of the Congo": "Congo (Kinshasa)",
+          "Republic of Korea": "South Korea",
+          "Syrian Arab Republic": "Syria",
+          "Viet Nam": "Vietnam",
+          "Iran (Islamic Republic of)": "Iran",
+          "Bolivia (Plurinational State of)": "Bolivia",
+          "Venezuela (Bolivarian Republic of)": "Venezuela"
+      };
+
+      function getColor(score) {
+          if (score === null) return 'gray';
+          if (score <= 40) return 'red';
+          if (score <= 60) return 'orange';
+          if (score <= 80) return 'yellow';
+          return 'green';
+      }
+
+      function fuzzyMatch(input, possibleMatches) {
+          if (manualMappings[input]) return manualMappings[input]; // Check manual fixes first
+
+          let bestMatch = null;
+          let bestScore = Infinity;
+          
+          possibleMatches.forEach(name => {
+              let distance = levenshtein.get(input, name);
+              if (distance < bestScore) {
+                  bestScore = distance;
+                  bestMatch = name;
+              }
+          });
+
+          return bestScore <= 5 ? bestMatch : null; // More lenient threshold
+      }
+
+      function initGlobe(countries, scoreMap) {
+          world = new Globe(document.getElementById('globeViz'))
+              .globeImageUrl(globeTextures[currentGlobeIndex])
+              .backgroundImageUrl(backgroundImages[currentBackgroundIndex])
+              .lineHoverPrecision(0)
+              .polygonsData(countries.features.filter(data => data.properties.ISO_A2 !== 'AQ'))
+              .polygonAltitude(0.01)
+              .polygonCapColor(feat => getColor(scoreMap.get(feat.properties.ADMIN) || null))
+              .polygonSideColor(() => 'rgba(0, 0, 0, 0)')
+              .polygonStrokeColor(() => '#111')
+              .polygonLabel(({ properties: data }) => `
+                  <b>${data.ADMIN} (${data.ISO_A2}):</b> <br />
+                  Score: <i>${scoreMap.get(data.ADMIN) ?? 'N/A'}</i>
+              `)
+              .onPolygonHover(hoverD => world
+                  .polygonAltitude(data => data === hoverD ? 0.06 : 0.01)
+                  .polygonCapColor(data => 
+                      data === hoverD 
+                      ? 'steelblue' 
+                      : getColor(scoreMap.get(data.properties.ADMIN) || null)
+                  )
+              )
+              .polygonsTransitionDuration(300);
+      }
+
+      Promise.all([
+          fetch('ne_110m_admin_0_countries.geojson').then(res => res.json()),
+          fetch(apiUrl).then(res => res.json())
+      ]).then(([countries, apiData]) => {
+          const scoreMap = new Map();
+          const countryNames = countries.features.map(f => f.properties.ADMIN);
+
+          apiData.features.forEach(f => {
+              const countryName = f.attributes.Name.trim();
+              let matchedName = countryNames.includes(countryName) ? countryName : fuzzyMatch(countryName, countryNames);
+              if (matchedName) {
+                  scoreMap.set(matchedName, f.attributes.Overall_Score);
+              } else {
+                  console.warn(`No match found for: ${countryName}`);
+              }
+          });
+
+          initGlobe(countries, scoreMap);
+      });
+
+      window.changeGlobeTexture = function() {
+          if (!world) return;
+          currentGlobeIndex = (currentGlobeIndex + 1) % globeTextures.length;
+          world.globeImageUrl(globeTextures[currentGlobeIndex]);
+      };
+
+      window.changeBackground = function() {
+          if (!world) return;
+          currentBackgroundIndex = (currentBackgroundIndex + 1) % backgroundImages.length;
+          world.backgroundImageUrl(backgroundImages[currentBackgroundIndex]);
+      };
+
+      window.updateColors = function() {
+          if (!world) return;
+          world.polygonsData(world.polygonsData()); // Forces re-render
+      };
+  </script>
+</body>
+
+-->
+<!--
+<!Doctype html>
+<head>
+  <style> 
+    body { margin: 0; text-align: center; }
+    #controls { position: absolute; top: 10px; left: 10px; z-index: 1000; }
+    button { margin: 5px; padding: 10px; cursor: pointer; }
+  </style>
+  <script src="//unpkg.com/globe.gl"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-levenshtein/2.0.6/levenshtein.min.js"></script> 
+</head>
+
+<body>
+  <div id="controls">
+    <button onclick="changeGlobeTexture()">Change Globe</button>
+    <button onclick="changeBackground()">Change Background</button>
+    <button onclick="updateColors()">Update Colors</button>
+  </div>
+
+  <div id="globeViz"></div>
+
+  <script type="module">
+      import { scaleSequential } from 'https://esm.sh/d3-scale';
+      import { interpolateYlOrRd } from 'https://esm.sh/d3-scale-chromatic';
+
+      const apiUrl = "https://services7.arcgis.com/IyvyFk20mB7Wpc95/arcgis/rest/services/Sustainable_Development_Report_2024_(with_indicators)/FeatureServer/0/query?where=1%3D1&outFields=Overall_Score,Name&outSR=4326&f=json";
+
+      const globeTextures = [
+          'generated_with_worldmapgenerator.png',
+          'earth-day.jpg',
+          'earth-blue-marble.jpg'
+      ];
+      const backgroundImages = [
+          '805180.jpg',
+          'night-sky.png',
+          'space-background.jpg'
+      ];
+      
+      let currentGlobeIndex = 0;
+      let currentBackgroundIndex = 0;
+      let world = null; // Ensure it's globally defined
+
+      // Manual mappings for common mismatches
+      const manualMappings = {
+          "Russian Federation": "Russia",
+          "United States": "United States of America",
+          "Democratic Republic of the Congo": "Congo (Kinshasa)",
+          "Republic of Korea": "South Korea",
+          "Syrian Arab Republic": "Syria",
+          "Viet Nam": "Vietnam",
+          "Iran (Islamic Republic of)": "Iran",
+          "Bolivia (Plurinational State of)": "Bolivia",
+          "Venezuela (Bolivarian Republic of)": "Venezuela"
+      };
+
+      function getColor(score) {
+          if (score === null) return 'gray';
+          if (score <= 40) return 'red';
+          if (score <= 60) return 'orange';
+          if (score <= 80) return 'yellow';
+          return 'green';
+      }
+
+      function fuzzyMatch(input, possibleMatches) {
+          if (manualMappings[input]) return manualMappings[input]; // Check manual fixes first
+
+          let bestMatch = null;
+          let bestScore = Infinity;
+          
+          possibleMatches.forEach(name => {
+              let distance = Levenshtein.distance(input, name); // FIX: Using the correct function now!
+              if (distance < bestScore) {
+                  bestScore = distance;
+                  bestMatch = name;
+              }
+          });
+
+          return bestScore <= 5 ? bestMatch : null; // More lenient threshold
+      }
+
+      function initGlobe(countries, scoreMap) {
+          world = new Globe(document.getElementById('globeViz'))
+              .globeImageUrl(globeTextures[currentGlobeIndex])
+              .backgroundImageUrl(backgroundImages[currentBackgroundIndex])
+              .lineHoverPrecision(0)
+              .polygonsData(countries.features.filter(data => data.properties.ISO_A2 !== 'AQ'))
+              .polygonAltitude(0.01)
+              .polygonCapColor(feat => getColor(scoreMap.get(feat.properties.ADMIN) || null))
+              .polygonSideColor(() => 'rgba(0, 0, 0, 0)')
+              .polygonStrokeColor(() => '#111')
+              .polygonLabel(({ properties: data }) => `
+                  <b>${data.ADMIN} (${data.ISO_A2}):</b> <br />
+                  Score: <i>${scoreMap.get(data.ADMIN) ?? 'N/A'}</i>
+              `)
+              .onPolygonHover(hoverD => world
+                  .polygonAltitude(data => data === hoverD ? 0.06 : 0.01)
+                  .polygonCapColor(data => 
+                      data === hoverD 
+                      ? 'steelblue' 
+                      : getColor(scoreMap.get(data.properties.ADMIN) || null)
+                  )
+              )
+              .polygonsTransitionDuration(300);
+      }
+
+      Promise.all([
+          fetch('ne_110m_admin_0_countries.geojson').then(res => res.json()),
+          fetch(apiUrl).then(res => res.json())
+      ]).then(([countries, apiData]) => {
+          const scoreMap = new Map();
+          const countryNames = countries.features.map(f => f.properties.ADMIN);
+
+          apiData.features.forEach(f => {
+              const countryName = f.attributes.Name.trim();
+              let matchedName = countryNames.includes(countryName) ? countryName : fuzzyMatch(countryName, countryNames);
+              if (matchedName) {
+                  scoreMap.set(matchedName, f.attributes.Overall_Score);
+              } else {
+                  console.warn(`No match found for: ${countryName}`);
+              }
+          });
+
+          initGlobe(countries, scoreMap);
+      });
+
+      window.changeGlobeTexture = function() {
+          if (!world) return;
+          currentGlobeIndex = (currentGlobeIndex + 1) % globeTextures.length;
+          world.globeImageUrl(globeTextures[currentGlobeIndex]);
+      };
+
+      window.changeBackground = function() {
+          if (!world) return;
+          currentBackgroundIndex = (currentBackgroundIndex + 1) % backgroundImages.length;
+          world.backgroundImageUrl(backgroundImages[currentBackgroundIndex]);
+      };
+
+      window.updateColors = function() {
+          if (!world) return;
+          world.polygonsData(world.polygonsData()); // Forces re-render
+      };
+  </script>
+</body>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Globe</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    #globeViz {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #updateColorsBtn {
+        left: 50px;
+    }
+
+    button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <script src="//unpkg.com/globe.gl"></script>
+</head>
+<body>
+
+  <div id="globeViz"></div>
+  
+  <button id="updateColorsBtn">Update Colors</button>
+  <button id="updateGlobeBtn">Update Globe</button>
+  
+  <script type="module">
+    // Native Levenshtein Distance Function
+    function levenshteinDistance(a, b) {
+      const dp = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+
+      for (let i = 0; i <= a.length; i++) dp[i][0] = i;
+      for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+
+      for (let i = 1; i <= a.length; i++) {
+        for (let j = 1; j <= b.length; j++) {
+          if (a[i - 1] === b[j - 1]) {
+            dp[i][j] = dp[i - 1][j - 1]; // No change needed
+          } else {
+            dp[i][j] = Math.min(
+              dp[i - 1][j] + 1,  // Deletion
+              dp[i][j - 1] + 1,  // Insertion
+              dp[i - 1][j - 1] + 1 // Substitution
+            );
+          }
+        }
+      }
+
+      return dp[a.length][b.length];
+    }
+
+    // Fuzzy match country name using Levenshtein distance
+    function fuzzyMatch(input, possibleMatches) {
+      if (manualMappings[input]) return manualMappings[input];
+
+      let bestMatch = null;
+      let bestScore = Infinity;
+
+      possibleMatches.forEach(name => {
+        let distance = levenshteinDistance(input, name); // FIX: Using our new function!
+        if (distance < bestScore) {
+          bestScore = distance;
+          bestMatch = name;
+        }
+      });
+
+      return bestScore <= 5 ? bestMatch : null; // Allow for small mismatches
+    }
+
+    // Function to determine color based on score
+    function getColor(score) {
+      if (score === null) return 'gray'; // Null values = gray
+      if (score <= 40) return 'red';
+      if (score <= 60) return 'orange';
+      if (score <= 80) return 'yellow';
+      return 'green'; // 81-100, green
+    }
+
+    const apiUrl = "https://services7.arcgis.com/IyvyFk20mB7Wpc95/arcgis/rest/services/Sustainable_Development_Report_2024_(with_indicators)/FeatureServer/0/query?where=1%3D1&outFields=Overall_Score,Name&outSR=4326&f=json";
+    
+    let currentGlobeImage = 'generated_with_worldmapgenerator.png';
+    let currentBackgroundImage = '805180.jpg';
+
+    Promise.all([
+      fetch('ne_110m_admin_0_countries.geojson').then(res => res.json()),
+      fetch(apiUrl).then(res => res.json())
+    ]).then(([countries, apiData]) => {
+      const scoreMap = new Map();
+      apiData.features.forEach(f => {
+        const countryName = f.attributes.Name;
+        const score = f.attributes.Overall_Score;
+        scoreMap.set(countryName, score);
+      });
+
+      const world = new Globe(document.getElementById('globeViz'))
+        .globeImageUrl(currentGlobeImage)
+        .backgroundImageUrl(currentBackgroundImage)
+        .lineHoverPrecision(0)
+        .polygonsData(countries.features.filter(data => data.properties.ISO_A2 !== 'AQ'))
+        .polygonAltitude(0.01)
+        .polygonCapColor(feat => getColor(scoreMap.get(fuzzyMatch(feat.properties.ADMIN, Array.from(scoreMap.keys()))) || null))
+        .polygonSideColor(() => 'rgba(0, 0, 0, 0)')
+        .polygonStrokeColor(() => '#111')
+        .polygonLabel(({ properties: data }) => `
+          <b>${data.ADMIN} (${data.ISO_A2}):</b> <br />
+          Score: <i>${scoreMap.get(data.ADMIN) ?? 'N/A'}</i>
+        `)
+        .onPolygonHover(hoverD => world
+          .polygonAltitude(data => data === hoverD ? 0.06 : 0.01)
+          .polygonCapColor(data => data === hoverD ? 'steelblue' : getColor(scoreMap.get(fuzzyMatch(data.properties.ADMIN, Array.from(scoreMap.keys()))) || null))
+        )
+        .polygonsTransitionDuration(300);
+
+      // Update globe and background on button click
+      document.getElementById('updateColorsBtn').addEventListener('click', () => {
+        world
+          .globeImageUrl(currentGlobeImage)
+          .backgroundImageUrl(currentBackgroundImage);
+      });
+
+      document.getElementById('updateGlobeBtn').addEventListener('click', () => {
+        // Here you can set new globe and background images as you wish
+        currentGlobeImage = 'new_globe_image.png'; // Update with the actual path
+        currentBackgroundImage = 'new_background_image.jpg'; // Update with the actual path
+        world
+          .globeImageUrl(currentGlobeImage)
+          .backgroundImageUrl(currentBackgroundImage);
+      });
+    });
+  </script>
+
+</body>
+</html>
