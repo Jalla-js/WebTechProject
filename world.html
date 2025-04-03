@@ -120,11 +120,11 @@
         </a-entity>
 
         <!-- Camera -->
-        <a-camera position="30 3 -40" look-controls="pointerLockEnabled: true" wasd-controls="acceleration: 20">
-            <a-cursor></a-cursor>
-        </a-camera>
+        <a-entity position="30 3 -40" look-controls="pointerLockEnabled: true" movement-controls wasd-controls="acceleration: 20">
+            <a-camera look-controls></a-camera>
         <a-entity oculus-touch-controls="hand: left"></a-entity>
         <a-entity oculus-touch-controls="hand: right"></a-entity>
+        </a-entity>
     </a-scene>
 
     <script>
