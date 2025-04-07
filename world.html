@@ -10,7 +10,7 @@
         <a-sky id="sky" src="/assets/805180.jpg"></a-sky>
         <!-- Lighting -->
         <a-light type="directional" position="0 5 5" intensity="0.8"></a-light>
-        <!--<a-light type="ambient" position="0 0 -35" intensity="0.5" color="yellow"></a-light>
+        <a-light type="ambient" position="0 0 -35" intensity="0.5" color="yellow"></a-light>
 
         <!-- Ground / Paths -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="150" height="150" color="green"></a-plane>
@@ -48,7 +48,8 @@
             <a-box width="5" height="5" depth="0.1" position="3.8 0.05 -10" rotation="-90 -90 0"></a-box>
             <a-box width="2.5" height="5" depth="0.1" position="1 0.05 -9.8" rotation="-90 -165 0"></a-box>
             <a-box width="2.5" height="5" depth="0.1" position="-0.05 0.05 -9.25" rotation="-90 -135 0"></a-box>
-            <a-box width="5" height="12" depth="0.1" position="-5.05 0.05 -5.25" rotation="-90 -45 0"></a-box>
+            <a-box width="5" height="12" depth="0.1" position="-4.05 0.05 -5.15" rotation="-90 -45 0"></a-box>
+            <a-box width="5" height="20" depth="0.1" position="-16.5 0.05 -1.65" rotation="-90 90 0"></a-box>
             
             <!--SDG14-->
             <a-entity id="tunnel" rotation="-90 0 0" position="9 1.5 3">
@@ -120,11 +121,12 @@
         </a-entity>
 
         <!-- Camera -->
-        <a-entity position="30 3 -40" look-controls="pointerLockEnabled: true" movement-controls wasd-controls="acceleration: 20">
+         <a-camera position="0 3 0"></a-camera>
+        <!--<a-entity position="30 3 -40" look-controls="pointerLockEnabled: true" movement-controls wasd-controls="acceleration: 20">
             <a-camera look-controls></a-camera>
         <a-entity oculus-touch-controls="hand: left"></a-entity>
         <a-entity oculus-touch-controls="hand: right"></a-entity>
-        </a-entity>
+        </a-entity>-->
     </a-scene>
 
     <script>
