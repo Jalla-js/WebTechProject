@@ -1,263 +1,65 @@
-1. People – Ending Poverty and Ensuring Dignity
+1. Dome 1: People – Ending Poverty and Ensuring Dignity (SDGs 1-5)
 
-These goals focus on basic human needs, equality, and well-being.
-
-    SDG 1: No Poverty – End poverty in all its forms everywhere.
-
-    SDG 2: Zero Hunger – End hunger, achieve food security, improve nutrition, and promote sustainable agriculture.
-
-    SDG 3: Good Health and Well-being – Ensure healthy lives and promote well-being for all at all ages.
-
-    SDG 4: Quality Education – Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.
-
-    SDG 5: Gender Equality – Achieve gender equality and empower all women and girls.
-
-2. Planet – Protecting the Earth’s Ecosystems
-
-These goals focus on environmental sustainability and ecosystem protection.
-
-    SDG 6: Clean Water and Sanitation – Ensure availability and sustainable management of water and sanitation for all.
-
-    SDG 12: Responsible Consumption and Production – Ensure sustainable consumption and production patterns.
-
-    SDG 13: Climate Action – Take urgent action to combat climate change and its impacts.
-
-    SDG 14: Life Below Water – Conserve and sustainably use the oceans, seas, and marine resources.
-
-    SDG 15: Life on Land – Protect, restore, and promote sustainable use of terrestrial ecosystems, manage forests, combat desertification, and halt biodiversity loss.
-
-3. Prosperity – Inclusive Growth and Innovation
-
-These goals promote economic development, innovation, and infrastructure.
-
-    SDG 7: Affordable and Clean Energy – Ensure access to affordable, reliable, sustainable, and modern energy for all.
-
-    SDG 8: Decent Work and Economic Growth – Promote sustained, inclusive, and sustainable economic growth, full and productive employment, and decent work.
-
-    SDG 9: Industry, Innovation, and Infrastructure – Build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation.
-
-    SDG 10: Reduced Inequalities – Reduce inequality within and among countries.
-
-4. Peace – Justice and Strong Institutions
-
-These goals emphasize peaceful societies, justice, and strong institutions.
-
-    SDG 16: Peace, Justice, and Strong Institutions – Promote peaceful and inclusive societies, provide access to justice for all, and build effective, accountable institutions.
-
-5. Partnership – Global Solidarity
-
-This goal emphasizes international cooperation and collective action.
-
-    SDG 17: Partnerships for the Goals – Strengthen the means of implementation and revitalize the global partnership for sustainable development.
-
-
-
-
-
-
-
-
-
-
-
-1. SDG 1: No Poverty
-
-    Design Concept: A humble, simple structure, perhaps a house or community center with a thatched roof. The building could use worn-out materials like recycled wood and straw to symbolize overcoming poverty.
+    Design Concept: A large, open dome structure, using earthy, sustainable materials (wood, clay, and stone) to symbolize groundedness and inclusivity. Inside the dome, the SDGs should be displayed as murals, sculptures, or interactive elements that represent progress in poverty reduction, hunger, education, health, and gender equality.
 
     Elements:
 
-        Mural depicting the transition from poverty to prosperity.
+ ----       SDG 1 (No Poverty): A small community scene, with people building homes or working together.
 
-        An interactive “poverty line” visual (static) to show disparities.
+ ----       SDG 2 (Zero Hunger): An indoor vertical garden with crops growing or food-sharing scenes.
 
-2. SDG 2: Zero Hunger
+        SDG 3 (Good Health and Well-being): A central wellness area with health symbols (stethoscopes, heart shapes, etc.).
 
-    Design Concept: A greenhouse-like structure, with crops growing inside to represent food security. It could feature glass walls and roof with edible plants.
+        SDG 4 (Quality Education): Open books, desks, or a small classroom setup, possibly with children and teachers depicted.
 
-    Elements:
+        SDG 5 (Gender Equality): A large equality symbol (equal sign) or statues of men and women in different roles, standing together.
 
-        Agricultural displays or small farming models.
+2. Dome 2: Planet – Protecting the Earth’s Ecosystems (SDGs 6, 12-15)
 
-        Interactive map showing hunger statistics (static for visual display).
-
-        A large tree or plant growing at the center.
-
-3. SDG 3: Good Health and Well-being
-
-    Design Concept: A clean, medical-looking building with elements like a first aid cross or symbolic heart-shaped design.
+    Design Concept: A clean, eco-friendly dome structure with sustainable features like solar panels, plants, and water flowing through the space. Inside, you can create dynamic visual displays about clean water, responsible consumption, climate action, and life on land and below water.
 
     Elements:
 
-        Health equipment, such as medical symbols or clean, calming white walls.
+        SDG 6 (Clean Water and Sanitation): A small water fountain or river flowing through the dome.
 
-        Static infographic showing health statistics.
+        SDG 12 (Responsible Consumption and Production): Recycling symbols, sustainable products, or interactive displays showing waste reduction.
 
-        Relaxation space within the building to signify mental health.
+        SDG 13 (Climate Action): A large globe or digital display showing climate data, or a mural depicting natural disasters and solutions.
 
-4. SDG 4: Quality Education
+        SDG 14 (Life Below Water): A display with aquatic plants and marine life sculptures, or a virtual aquarium with species from the ocean.
 
-    Design Concept: A library or school building, with bookshelves or digital learning elements, designed to promote knowledge and learning.
+        SDG 15 (Life on Land): A forest or park-like setting with trees, wildlife, and plant life inside the dome, possibly with green walls or living plants.
 
-    Elements:
+3. Dome 3: Prosperity – Inclusive Growth and Innovation (SDGs 7-10)
 
-        Books, chalkboards, and desks with educational symbols.
-
-        Interactive displays (static) showing global literacy rates and educational resources.
-
-        Iconic globe or a graduation cap symbolizing success.
-
-5. SDG 5: Gender Equality
-
-    Design Concept: A modern, sleek building with an equal symbol at its core, showcasing men, women, and non-binary people together in harmony.
+    Design Concept: A modern, tech-inspired dome with clean lines and a sleek exterior. This dome could feature metallic textures, futuristic designs, and innovation-based displays, reflecting energy, economic growth, infrastructure, and reducing inequalities.
 
     Elements:
 
-        Large gender equality symbol (equal sign) or a balance scale.
+        SDG 7 (Affordable and Clean Energy): Solar panels on the dome’s roof or wind turbines near the entrance.
 
-        Murals showing women and men collaborating in various professions.
+        SDG 8 (Decent Work and Economic Growth): A small digital economy board or a simulated workspace with futuristic technology and collaboration.
 
-        Artifacts or symbols of empowerment and rights.
+        SDG 9 (Industry, Innovation, and Infrastructure): Sculptures or models representing infrastructure like bridges, factories, and tech innovations.
 
-6. SDG 6: Clean Water and Sanitation
+        SDG 10 (Reduced Inequalities): A large, divided structure showing inequality on one side, with elements bridging the gap to represent inclusivity.
 
-    Design Concept: A water-themed enclosure with clear water flowing through or around it, perhaps with fountains or small water features.
+4. Dome 4: Peace – Justice and Strong Institutions (SDG 16)
 
-    Elements:
-
-        Transparent walls or structures to symbolize clean water.
-
-        Static water cycle infographic.
-
-        Water conservation techniques illustrated.
-
-7. SDG 7: Affordable and Clean Energy
-
-    Design Concept: A futuristic energy hub with solar panels, wind turbines, and a green energy design.
+    Design Concept: A grand, monumental dome with clean, formal design. The interior could reflect symbols of justice, peace, and rule of law, such as statues, the scales of justice, and images of collaboration across nations.
 
     Elements:
 
-        Solar panels on the roof, wind turbines placed nearby.
+        SDG 16 (Peace, Justice, and Strong Institutions): A large scale of justice statue at the center, surrounded by representations of peace (doves, olive branches), and a symbolic court of law.
 
-        Light installations to represent renewable energy.
+        Interactive or static visuals: Digital projections showing peacebuilding efforts or UN resolutions, as well as images of peaceful protests and justice efforts worldwide.
 
-        Infographic of global energy consumption.
+5. Dome 5: Partnership – Global Solidarity (SDG 17)
 
-8. SDG 8: Decent Work and Economic Growth
-
-    Design Concept: A bustling factory or office building, with digital screens showing economic data and growth.
+    Design Concept: A large, interconnected globe-like structure or a network of interlocking pieces symbolizing the interconnectedness of global partnerships. This dome could be built with a series of interconnected arches or rings to symbolize global unity and collaboration.
 
     Elements:
 
-        A bustling workspace design—desk chairs, computers, and machines to represent modern work.
+        SDG 17 (Partnerships for the Goals): A large, glowing globe or a network of rings representing global partnerships.
 
-        Visual charts of economic growth.
-
-        Statues or images of people working in various industries.
-
-9. SDG 9: Industry, Innovation, and Infrastructure
-
-    Design Concept: A futuristic industrial building, made of metal and glass, possibly resembling a tech startup hub or a factory.
-
-    Elements:
-
-        Displays of new technology (robots, 3D printers, etc.).
-
-        Static models of infrastructure (bridges, buildings).
-
-        Infographic of innovation milestones.
-
-10. SDG 10: Reduced Inequalities
-
-    Design Concept: A bridge-like structure connecting two different sections, symbolizing the bridging of gaps between inequality.
-
-    Elements:
-
-        Statues representing diverse groups of people.
-
-        Mural showing inclusivity in society.
-
-        Infographic with inequality statistics.
-
-11. SDG 11: Sustainable Cities and Communities
-
-    Design Concept: A smart city model building with green roofs, walkable streets, and eco-friendly infrastructure.
-
-    Elements:
-
-        Model city plan with eco-friendly features.
-
-        Static visualizations of sustainable urban solutions.
-
-        Green space with plants growing on the exterior.
-
-12. SDG 12: Responsible Consumption and Production
-
-    Design Concept: A recycling facility or sustainable production house with an eco-conscious design, featuring recycling bins and sustainable practices.
-
-    Elements:
-
-        Recycling bins, sustainable materials.
-
-        Infographic showing resource consumption statistics.
-
-        Energy-efficient appliances as display pieces.
-
-13. SDG 13: Climate Action
-
-    Design Concept: A dynamic, circular structure representing the Earth, with climate data displayed on the walls.
-
-    Elements:
-
-        Earth sculptures or a globe in the center.
-
-        Static climate change statistics.
-
-        Solar panels and wind turbines as part of the enclosure.
-
-14. SDG 14: Life Below Water
-
-    Design Concept: A transparent underwater enclosure that showcases marine life with coral reefs and fish swimming inside.
-
-    Elements:
-
-        Coral reefs, ocean animals, or fish within clear walls.
-
-        Static infographics on marine pollution and conservation.
-
-        Ocean-themed elements such as shells and starfish.
-
-15. SDG 15: Life on Land
-
-    Design Concept: A nature reserve-like structure with trees, plants, and animals, symbolizing land ecosystems.
-
-    Elements:
-
-        Green walls, tree sculptures, and flora models.
-
-        Static biodiversity and forest loss infographics.
-
-        Animal sculptures or carvings.
-
-16. SDG 16: Peace, Justice, and Strong Institutions
-
-    Design Concept: A strong, monumental building like a courthouse or government building, symbolizing justice and peace.
-
-    Elements:
-
-        Pillars of justice, with scales and doves symbolizing peace.
-
-        Peaceful statues representing unity and collaboration.
-
-        Infographics on justice and peacebuilding efforts.
-
-17. SDG 17: Partnerships for the Goals
-
-    Design Concept: A large, open amphitheater or collaborative meeting space, with a large globe or interconnected nodes in the center, symbolizing global cooperation.
-
-    Elements:
-
-        Interconnected rings or nodes representing partnerships.
-
-        World map showing collaborative efforts.
-
-        Digital screens showing global SDG partnerships.
+        Interactive components: Digital screens showing real-time collaborations and partnerships across the world, or people working together on global goals.
