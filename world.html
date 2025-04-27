@@ -1,140 +1,129 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New World</title>
+    <style>
+        .titleBoard {
+            width: 1536px;
+            height: 800px;
+        }
+
+        header {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 80px;
+        }
+
+        header p {
+            font-size: 20px;
+        }
+
+        .page {
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 0 3px solid yellow;
+        }
+    </style>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
     <script src="js/components.js"></script>
 </head>
 
 <body>
     <a-scene>
-        <a-sky id="sky" src="/assets/805180.jpg"></a-sky>
+        <a-sky color="lightblue"></a-sky>
         <!-- Lighting -->
-        <a-light type="directional" position="0 5 5" intensity="0.8"></a-light>
-        <a-light type="ambient" position="0 0 -35" intensity="0.5" color="yellow"></a-light>
+        <!-- Sunlight (Directional Light) -->
+        <a-light type="directional" position="50 50 50" intensity="0.8" color="#ffffff" castShadow="true"></a-light>
+        <!-- Soft Ambient Light -->
+        <a-light type="ambient" position="0 5 0" intensity="0.3" color="#ffffff"></a-light>
+        <!-- Hemisphere Light (To simulate the sky) -->
+        <a-light type="hemisphere" position="0 10 0" intensity="0.6" color="#88aaff" groundColor="#444444"></a-light>
 
-        <!-- Ground / Paths -->
-        <a-plane position="0 0 0" rotation="-90 0 0" width="150" height="150" color="green"></a-plane>
-        <a-box width="5" height="12.5" depth="0.1" position="0 0.05 3" rotation="-90 25 0"></a-box>
-        <a-box width="5" height="27" depth="0.1" position="4 0.05 -12" rotation="-90 -30 0"></a-box>
 
-        <!--
-            Building 1 – Nature & Sustainability
-            (Themes: Climate, Water, Ecosystems)
-                SDG 13 – Climate Action
-                SDG 14 – Life Below Water
-                SDG 15 – Life on Land
-      -->
-        <a-entity id="building" position="10 0 -40" rotation="0 -30 0">
-            <a-entity id="roof" position="0 10 0"></a-entity>
-            <a-box class="window" position="-10 5 15" width="20" height="10" depth="1"
-                material="color: #ffffff; transparent: true; opacity: 0.2; roughness: 0; metalness: 1; side: double; envMap: #sky; depthWrite: false"></a-box>
-            <a-box class="wall" position="9 8 15" width="18" height="4" depth="1"
-                material="color: #ffffff;roughness: 5; side: double"></a-box>
-            <a-box class="wall" position="2.5 3 15" width="5" height="6" depth="1"
-                material="color: #ffffff;roughness: 5; side: double"></a-box>
-            <a-box class="wall" position="15.5 3 15" width="5" height="6" depth="1"
-                material="color: #ffffff;roughness: 5; side: double"></a-box>
-            <a-box class="wall" position="0 2.05 -15" width="36" height="4.1" depth="1"
-                material="color: #ffffff;roughness: 5; side: double"></a-box>
-            <a-box class="wall" position="17.75 5 0" width="0.5" height="10" depth="30"
-                material="color: #ffffff;roughness: 5; side: double"></a-box>
-            <a-cylinder height="18" radius="1" color="#ffffff" position="20 7.5 18" rotation="-20 40 0"></a-cylinder>
-            <a-cylinder height="12" radius="0.75" color="#ffffff" position="20 4.5 -18" rotation="0 40 20"></a-cylinder>
-            <a-cylinder height="10" radius="0.75" color="#ffffff" position="-18 5 16.5"></a-cylinder>
-            
-            <!--Interior Paths-->
-            <a-box width="5" height="20" depth="0.1" position="8.8 0.05 4" rotation="-90 0 0"></a-box>
-            <a-box width="5" height="7" depth="0.1" position="8.8 0.05 -9" rotation="-90 0 0"></a-box>
-            <a-box width="5" height="5" depth="0.1" position="3.8 0.05 -10" rotation="-90 -90 0"></a-box>
-            <a-box width="2.5" height="5" depth="0.1" position="1 0.05 -9.8" rotation="-90 -165 0"></a-box>
-            <a-box width="2.5" height="5" depth="0.1" position="-0.05 0.05 -9.25" rotation="-90 -135 0"></a-box>
-            <a-box width="5" height="12" depth="0.1" position="-4.05 0.05 -5.15" rotation="-90 -45 0"></a-box>
-            <a-box width="5" height="20" depth="0.1" position="-16.5 0.05 -1.65" rotation="-90 90 0"></a-box>
-            
-            <!--SDG14-->
-            <a-entity id="tunnel" rotation="-90 0 0" position="9 1.5 3">
-                <a-cylinder position="0 0 0" radius="4" height="17" open-ended="true" theta-length="360"
-                    material="color: #0000ff; transparent: true; opacity: 0.4; roughness: 0; metalness: 1; side: double;"
-                    rotation="0 0 0">
-                </a-cylinder>
-                </a-entity>
-                <a-plane position="9 5 11.5" rotation="0 0 0" width="8" height="2" material="color: black; side: double;"></a-plane>
-                <a-plane position="5 1 11.5" rotation="0 0 45" width="2" height="8" material="color: black; side: double;"></a-plane>
-                <a-plane position="13 1 11.5" rotation="0 0 -45" width="2" height="8" material="color: black; side: double;"></a-plane>
-                <a-plane position="3.5 1.5 11.5" width="5" height="9" color="black" material="color: black; side: double;"></a-plane>
-                <a-plane position="14.5 1.5 11.5" width="5" height="9" color="black" material="color: black; side: double;"></a-plane>
-                <a-plane position="9 5 -5.5" rotation="0 0 0" width="8" height="2" material="color: blue; side: front;"></a-plane>
-                <a-plane position="9 5 -5.5" rotation="0 0 0" width="8" height="2" material="color: white; side: back;"></a-plane>
-                <a-plane position="5 1 -5.5" rotation="0 0 45" width="2" height="8" material="color: blue; side: front;"></a-plane>
-                <a-plane position="5 1 -5.5" rotation="0 0 45" width="2" height="8" material="color: white; side: back;"></a-plane>
-                <a-plane position="13 1 -5.5" rotation="0 0 -45" width="2" height="8" material="color: blue; side: front;"></a-plane>
-                <a-plane position="13 1 -5.5" rotation="0 0 -45" width="2" height="8" material="color: white; side: back;"></a-plane>
-                <a-plane position="3.5 1.5 -5.5" width="5" height="9" color="black" material="color: blue; side: front;"></a-plane>
-                <a-plane position="3.5 1.5 -5.5" width="5" height="9" color="black" material="color: white; side: back;"></a-plane>
-                <a-plane position="14.5 1.5 -5.5" width="5" height="9" color="black" material="color: blue; side: front;"></a-plane>
-                <a-plane position="14.5 1.5 -5.5" width="5" height="9" color="black" material="color: white; side: back;"></a-plane>
-                <a-plane width="17" height="6" rotation="0 90 0" position="1 3 3" material="color: blue; side: front;"></a-plane>
-                <a-plane width="17" height="6" rotation="0 90 0" position="1 3 3" material="color: white; side: back;"></a-plane>
-                <a-plane width="17" height="6" rotation="0 90 0" position="17 3 3" material="color: blue; side: back;"></a-plane>
-                <a-plane width="17" height="6" rotation="0 90 0" position="17 3 3" material="color: blue; side: front;"></a-plane>
-                <a-plane width="16" height="17" rotation="-90 0 0" position="9 5 3" material="color: blue; side: double;"></a-plane>
-                <a-box position="4 0.9 3" color="yellow" width="3" height="1.8" depth="16.9"></a-box>
-                <a-entity id="dead-coral-row" position="4 2.3 10.5" rotation="0 90 0"></a-entity>
-                <a-box position="15 0.9 3" color="yellow" width="3" height="1.8" depth="16.9"></a-box>
-                <a-entity id="thriving-coral-row" position="15 2.3 10.5" rotation="0 90 0"></a-entity>
-                <a-plane material="color: #8B5A2B; side: front" position="1 3 13" height="6" width="3" rotation="0 90 0"></a-plane>
-                <a-plane material="color: white; side: back" position="1 3 13" height="6" width="3" rotation="0 90 0"></a-plane>
-                <a-plane material="color: #8B5A2B; side: back" position="17 3 13" height="6" width="3" rotation="0 90 0"></a-plane>
-                <a-plane material="color: white; side: front" position="17 3 13" height="6" width="3" rotation="0 90 0"></a-plane>
-                <a-plane material="color: #8B5A2B; side: double" position="9 6 13" height="3" width="16" rotation="-90 0 0"></a-plane>
+        <!-- Ground -->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="500" height="500" color="darkgreen"></a-plane>
 
-        <a-entity class="fence" position="6 1 3">
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 -8"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 -4"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 0"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 4"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 8"></a-cylinder>
-
-            <a-box height="0.3" width="16" depth="0.2" color="brown" position="0 0 0" rotation="0 90 0"></a-box>
-            <a-box height="0.3" width="16" depth="0.2" color="brown" position="0 0.8 0" rotation="0 90 0"></a-box>
+        <!-- Main Dome (Centerpiece) -->
+        <a-entity receiveShadow="true" geometry="primitive: sphere; radius: 5;"
+            material="color: lightgray; side: double; opacity: 1; metalness: 0;" position="0 0 0" scale="4 4 4">
         </a-entity>
 
-        <a-entity class="fence" position="12 1 3">
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 -8"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 -4"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 0"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 4"></a-cylinder>
-            <a-cylinder radius="0.3" height="2" color="brown" position="0 0 8"></a-cylinder>
-
-            <a-box height="0.3" width="16" depth="0.2" color="brown" position="0 0 0" rotation="0 90 0"></a-box>
-            <a-box height="0.3" width="16" depth="0.2" color="brown" position="0 0.8 0" rotation="0 90 0"></a-box>
-        </a-entity>
-        <a-entity class="board" position="5.5 3 14.9" rotation="0 50 0">
-            <a-cylinder height="6" radius="0.4" position="-1.5 0 0" color="brown"></a-cylinder>
-            <a-box width="3" height="5" depth="0.3" position="0 0.25 0" color="brown"></a-box>
-            <a-cylinder height="6" radius="0.4" position="1.5 0 0" color="brown"></a-cylinder>
+        <!-- Central Square & Welcome Board -->
+        <a-box position="0 0.05 0" width="15" height="15" depth="0.1" rotation="-90 0 0" color="#cccccc"></a-box>
+        <a-entity id="treeContainer"></a-entity>
+        <a-entity look-at="#camera" class="page" htmlembed position="0 4 0">
+            <section class="titleBoard">
+                <header>
+                    <h1>WELCOME TO<br>SDGBox</h1>
+                    <p>A visual representation of each country's progress towards the UN's Sustainable Development Goals
+                    </p>
+                </header>
+            </section>
         </a-entity>
 
-        <!--SDG15-->
-        <a-entity id="SDG15Trees" position="-4 0 -12" rotation="0 -90 0"></a-entity>
-        <a-entity id="SDG15Rocks"></a-entity>
+        <!-- Dome 1 (top-left) -->
+        <a-entity receiveShadow="true"  geometry="primitive: sphere; radius: 5;" material="color: lightgray; side: double;"
+            position="-35 1 -80" scale="5 5 5">
         </a-entity>
 
-        <!-- Camera -->
-         <a-camera position="0 3 0"></a-camera>
-        <!--<a-entity position="30 3 -40" look-controls="pointerLockEnabled: true" movement-controls wasd-controls="acceleration: 20">
-            <a-camera look-controls></a-camera>
-        <a-entity oculus-touch-controls="hand: left"></a-entity>
-        <a-entity oculus-touch-controls="hand: right"></a-entity>
-        </a-entity>-->
+        <!-- Tunnel 1-5 -->
+        <a-box position="-35 2.5 -50" width="5" height="5" depth="20"
+            material="color: #000000; side: double; opacity: 0.3" rotation="0 0 0">
+        </a-box>
+
+        <!-- Dome 2 (top-right) -->
+        <a-entity receiveShadow="true"  id="d2" geometry="primitive: sphere; radius: 5;"
+            material="color: lighgray; side: double;" position="35 1 -80" scale="5 5 5">
+        </a-entity>
+
+        <!-- Tunnel 2-4 -->
+        <a-box position="35 2.5 -50" width="5" height="5" depth="20" material="color: #000000; side: double; opacity: 0.3"
+            rotation="0 0 0">
+        </a-box>
+
+        <!-- Dome 5 (bottom-left) -->
+        <a-entity receiveShadow="true"  geometry="primitive: sphere; radius: 5;" material="color: lightgray; side: double;"
+            position="-30 0 -30" scale="3 3 3">
+        </a-entity>
+
+        <!-- Tunnel 5-3 -->
+        <a-box position="-15 2.5 -15" width="5" height="5" depth="20"
+            material="color: #000000; side: double; opacity: 0.3" rotation="0 45 0">
+        </a-box>
+
+        <!-- Dome 4 (bottom-right) -->
+        <a-entity receiveShadow="true"  geometry="primitive: sphere; radius: 5;" material="color: lightgray; side: double;"
+            position="30 0 -30" scale="3 3 3">
+        </a-entity>
+
+        <!-- Tunnel 4-3 -->
+        <a-box position="15 2.5 -15" width="5" height="5" depth="20"
+            material="color: #000000; side: double; opacity: 0.3" rotation="0 -45 0">
+        </a-box>
+
+        <!-- Camera and Controls -->
+        <a-entity id="cameraRig">
+            <a-camera id="camera" camera="" position="0 1.6 10" look-controls wasd-controls="fly"></a-camera>
+            <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .screen"></a-entity>
+            <a-entity laser-controls="" raycaster="objects: .screen;" daydream-controls="" gearvr-controls=""
+                oculus-go-controls="" oculus-touch-controls="" vive-controls="" vive-focus-controls=""
+                windows-motion-controls=""></a-entity>
+        </a-entity>
+
+        <!-- (Optional) Red Box for testing -->
+        <!-- <a-box width="2" height="2" depth="2" color="red" position="0 1 0"></a-box> -->
     </a-scene>
-
-    <script>
-    // Generate both rows
-    document.querySelector("#dead-coral-row").setAttribute("generate-coral", "dead");
-    document.querySelector("#thriving-coral-row").setAttribute("generate-coral", "thriving");
-    document.getElementById("roof").setAttribute("bend-plane", { width: 40, height: 35, curveFactor: 3 });
-    </script>
 </body>
 
 </html>
