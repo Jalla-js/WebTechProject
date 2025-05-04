@@ -89,12 +89,14 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
-    <script src="js/domes.js" defer></script>
+    <script src="js/sdgs.js" defer></script>
     <script src="js/interactive.js" defer></script>
+    <script src="js/CreateModule.js" ></script>
 </head>
 
 <body>
     <a-scene cursor="rayOrigin: mouse">
+        <!----
         <a-assets>
             <img id="image1"
                 src="https://images.unsplash.com/photo-1745594618508-6e3abfce30ef?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
@@ -102,22 +104,19 @@
                 src="https://images.unsplash.com/photo-1743485237407-e00bfb75163e?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
             <img id="image3"
                 src="https://images.unsplash.com/photo-1743953729837-bc934e81af4f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-            <!-- Add more images here -->
-        </a-assets>
+        </a-assets>-->
+
         <a-sky color="lightblue"></a-sky>
         <!-- Lighting -->
-        <!-- Sunlight (Directional Light) -->
         <a-light type="directional" position="50 50 50" intensity="0.8" color="#ffffff" castShadow="true"></a-light>
-        <!-- Soft Ambient Light -->
         <a-light type="ambient" position="0 5 0" intensity="0.3" color="#ffffff"></a-light>
-        <!-- Hemisphere Light (To simulate the sky) -->
-        <a-light type="hemisphere" position="0 10 0" intensity="0.6" color="#88aaff" groundColor="#444444"></a-light>
+        <a-light type="hemisphere" position="0 10 0" intensity="0.4" color="#88aaff" groundColor="#444444"></a-light>
 
 
         <!-- Ground -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="500" height="500" color="darkgreen"></a-plane>
 
-        <!-- Central Square & Welcome Board -->
+        <!-- Central Square & Welcome Board --
         <a-box position="0 0.05 0" width="15" height="15" depth="0.1" rotation="-90 0 0" color="#cccccc"></a-box>
         <a-entity id="treeContainer"></a-entity>
         <a-entity look-at="#camera" class="page" htmlembed position="0 4 0">
@@ -128,329 +127,11 @@
                     </p>
                 </header>
             </section>
-        </a-entity>
+        </a-entity>-->
 
-        <a-entity id="domeContainer" position="0 0 0">
-
-            <!-- Main Dome (Centerpiece) -->
-            <a-entity id="d3" receiveShadow="true" geometry="primitive: sphere; radius: 5;"
-                material="color: lightgray; side: double; opacity: 1; metalness: 0;" position="0 0 0" scale="4 4 4">
-            </a-entity>
-
-            <!-- Dome 1 (top-left) -->
-            <a-entity id="d1" position="-35 1 -80">
-                <a-sphere radius="5" material="color: lightgray; side: double;" scale="5 5 5"></a-sphere>
-
-                <!-- SDG 1 - Zero Poverty -->
-                <a-entity id="sdg1" position="-15 -1 15">
-                    <a-entity id="carouselContainer" look-at="#camera" class="page" htmlembed position="0 3 0">
-                        <section class="titleBoard">
-                            <img id="carousel"
-                                src="https://images.unsplash.com/photo-1743485237407-e00bfb75163e?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-                            <div class="carousel-controls">
-                                <button id="next">Next Image</button>
-                            </div>
-                        </section>
-                    </a-entity>
-                    <a-sphere class="next" position="0 -1 0" radius="2" color="blue"></a-sphere>
-                </a-entity>
-
-
-                <!-- SDG 1 - Zero Hunger -->
-                <a-entity id="sdg2" position="0 0 -15">
-
-
-                    <!-- Big Trellis Wall -->
-<a-entity id="trellis" position="0 -1 -5" rotation="0 0 0">
-
-    <!-- Vertical sticks (spaced across 12 units) -->
-    <a-cylinder height="8" radius="0.05" position="-6 4 0" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="8" radius="0.05" position="-4 4 0" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="8" radius="0.05" position="-2 4 0" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="8" radius="0.05" position="0 4 0" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="8" radius="0.05" position="2 4 0" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="8" radius="0.05" position="4 4 0" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="8" radius="0.05" position="6 4 0" color="#8B5A2B"></a-cylinder>
-  
-    <!-- Horizontal sticks (spaced up 8 units) -->
-    <a-cylinder height="12" radius="0.05" position="0 0 0" rotation="0 0 90" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="12" radius="0.05" position="0 2 0" rotation="0 0 90" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="12" radius="0.05" position="0 4 0" rotation="0 0 90" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="12" radius="0.05" position="0 6 0" rotation="0 0 90" color="#8B5A2B"></a-cylinder>
-    <a-cylinder height="12" radius="0.05" position="0 8 0" rotation="0 0 90" color="#8B5A2B"></a-cylinder>
-  
-  </a-entity>
-
-  <!-- Dense Plants Climbing the Big Trellis -->
-<a-entity id="trellis-plants" position="0 -1 -5">
-    <!-- Looping a bunch of leaves manually to make it look very dense -->
-  
-    <!-- Row 1 -->
-    <a-plane position="-5.5 7.5 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 15 0"></a-plane>
-    <a-plane position="-3.5 7.5 0.1" width="0.5" height="0.5" material="color: seagreen; side: double;" rotation="0 -10 0"></a-plane>
-    <a-plane position="-1.5 7.5 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 20 0"></a-plane>
-    <a-plane position="0.5 7.5 0.1" width="0.5" height="0.5" material="color: limegreen; side: double;" rotation="0 -5 0"></a-plane>
-    <a-plane position="2.5 7.5 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 10 0"></a-plane>
-    <a-plane position="4.5 7.5 0.1" width="0.5" height="0.5" material="color: seagreen; side: double;" rotation="0 -15 0"></a-plane>
-  
-    <!-- Row 2 -->
-    <a-plane position="-5 6 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 5 0"></a-plane>
-    <a-plane position="-3 6 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 0 0"></a-plane>
-    <a-plane position="-1 6 0.1" width="0.5" height="0.5" material="color: seagreen; side: double;" rotation="0 -5 0"></a-plane>
-    <a-plane position="1 6 0.1" width="0.5" height="0.5" material="color: limegreen; side: double;" rotation="0 15 0"></a-plane>
-    <a-plane position="3 6 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 -10 0"></a-plane>
-    <a-plane position="5 6 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 5 0"></a-plane>
-  
-    <!-- Row 3 -->
-    <a-plane position="-5.5 4.5 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 10 0"></a-plane>
-    <a-plane position="-3.5 4.5 0.1" width="0.5" height="0.5" material="color: seagreen; side: double;" rotation="0 -15 0"></a-plane>
-    <a-plane position="-1.5 4.5 0.1" width="0.5" height="0.5" material="color: limegreen; side: double;" rotation="0 5 0"></a-plane>
-    <a-plane position="0.5 4.5 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 -5 0"></a-plane>
-    <a-plane position="2.5 4.5 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 15 0"></a-plane>
-    <a-plane position="4.5 4.5 0.1" width="0.5" height="0.5" material="color: seagreen; side: double;" rotation="0 -10 0"></a-plane>
-  
-    <!-- Row 4 -->
-    <a-plane position="-5 3 0.1" width="0.5" height="0.5" material="color: limegreen; side: double;" rotation="0 5 0"></a-plane>
-    <a-plane position="-3 3 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 -5 0"></a-plane>
-    <a-plane position="-1 3 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 10 0"></a-plane>
-    <a-plane position="1 3 0.1" width="0.5" height="0.5" material="color: seagreen; side: double;" rotation="0 -10 0"></a-plane>
-    <a-plane position="3 3 0.1" width="0.5" height="0.5" material="color: limegreen; side: double;" rotation="0 0 0"></a-plane>
-    <a-plane position="5 3 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 15 0"></a-plane>
-  
-    <!-- Row 5 (bottom) -->
-    <a-plane position="-5.5 1.5 0.1" width="0.5" height="0.5" material="color: forestgreen; side: double;" rotation="0 10 0"></a-plane>
-    <a-plane position="-3.5 1.5 0.1" width="0.5" height="0.5" material="color: limegreen; side: double;" rotation="0 -5 0"></a-plane>
-    <a-plane position="-1.5 1.5 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 5 0"></a-plane>
-    <a-plane position="0.5 1.5 0.1" width="0.5" height="0.5" material="color: seagreen; side: double;" rotation="0 -10 0"></a-plane>
-    <a-plane position="2.5 1.5 0.1" width="0.5" height="0.5" material="color: limegreen; side: double;" rotation="0 15 0"></a-plane>
-    <a-plane position="4.5 1.5 0.1" width="0.5" height="0.5" material="color: darkgreen; side: double;" rotation="0 0 0"></a-plane>
-  
-  </a-entity>
-
-
-
-                    <a-entity class="vFarm" position="0 0 0">
-                        <a-sphere position="0 -1 0" radius="1" thetaLength="180" rotation="0 0 0"
-                            color="darkgreen"></a-sphere>
-                        <a-cylinder radius="1.2" height="0.1" position="0 0 0" material="metalness: 0.3"></a-cylinder>
-                        <a-cylinder radius="0.3" height="6" position="0 1 0" material="metalness: 0.3"></a-cylinder>
-                        <a-entity position="0 1.5 0.4" rotation="0 30 0">
-                            <a-plane width="0.3" height="0.6" material="color: green; side: double;"
-                                rotation="45 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 2.5 -0.3" rotation="0 -20 0">
-                            <a-plane width="0.2" height="0.5" material="color: forestgreen; side: double;"
-                                rotation="30 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 3.5 0.2" rotation="0 10 0">
-                            <a-plane width="0.25" height="0.4" material="color: limegreen; side: double;"
-                                rotation="60 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 4 -0.4" rotation="0 -15 0">
-                            <a-plane width="0.3" height="0.7" material="color: seagreen; side: double;"
-                                rotation="50 0 0"></a-plane>
-                        </a-entity>
-                        <a-torus position="0 2 0" radius="0.35" radius-tubular="0.01" rotation="90 0 0"
-                            material="color: green;"></a-torus>
-                        <a-torus position="0 3 0" radius="0.35" radius-tubular="0.01" rotation="90 45 0"
-                            material="color: darkgreen;"></a-torus>
-                        <a-torus position="0 4 0" radius="0.35" radius-tubular="0.01" rotation="90 90 0"
-                            material="color: green;"></a-torus>
-                    </a-entity>
-                    
-                    <a-entity class="vFarm" position = "-3 0 0">
-                        <a-sphere position="0 -1 0" radius="1" thetaLength="180" rotation="0 0 0"
-                            color="darkgreen"></a-sphere>
-                        <a-cylinder radius="1.2" height="0.1" position="0 0 0" material="metalness: 0.3"></a-cylinder>
-                        <a-cylinder radius="0.3" height="6" position="0 1 0" material="metalness: 0.3"></a-cylinder>
-                        <a-entity position="0 1.5 0.4" rotation="0 30 0">
-                            <a-plane width="0.3" height="0.6" material="color: green; side: double;"
-                                rotation="45 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 2.5 -0.3" rotation="0 -20 0">
-                            <a-plane width="0.2" height="0.5" material="color: forestgreen; side: double;"
-                                rotation="30 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 3.5 0.2" rotation="0 10 0">
-                            <a-plane width="0.25" height="0.4" material="color: limegreen; side: double;"
-                                rotation="60 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 4 -0.4" rotation="0 -15 0">
-                            <a-plane width="0.3" height="0.7" material="color: seagreen; side: double;"
-                                rotation="50 0 0"></a-plane>
-                        </a-entity>
-                        <a-torus position="0 2 0" radius="0.35" radius-tubular="0.01" rotation="90 0 0"
-                            material="color: green;"></a-torus>
-                        <a-torus position="0 3 0" radius="0.35" radius-tubular="0.01" rotation="90 45 0"
-                            material="color: darkgreen;"></a-torus>
-                        <a-torus position="0 4 0" radius="0.35" radius-tubular="0.01" rotation="90 90 0"
-                            material="color: green;"></a-torus>
-                    </a-entity>
-
-                    <a-entity class="vFarm" position = "3 0 0">
-                        <a-sphere position="0 -1 0" radius="1" thetaLength="180" rotation="0 0 0"
-                            color="darkgreen"></a-sphere>
-                        <a-cylinder radius="1.2" height="0.1" position="0 0 0" material="metalness: 0.3"></a-cylinder>
-                        <a-cylinder radius="0.3" height="6" position="0 1 0" material="metalness: 0.3"></a-cylinder>
-                        <a-entity position="0 1.5 0.4" rotation="0 30 0">
-                            <a-plane width="0.3" height="0.6" material="color: green; side: double;"
-                                rotation="45 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 2.5 -0.3" rotation="0 -20 0">
-                            <a-plane width="0.2" height="0.5" material="color: forestgreen; side: double;"
-                                rotation="30 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 3.5 0.2" rotation="0 10 0">
-                            <a-plane width="0.25" height="0.4" material="color: limegreen; side: double;"
-                                rotation="60 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 4 -0.4" rotation="0 -15 0">
-                            <a-plane width="0.3" height="0.7" material="color: seagreen; side: double;"
-                                rotation="50 0 0"></a-plane>
-                        </a-entity>
-                        <a-torus position="0 2 0" radius="0.35" radius-tubular="0.01" rotation="90 0 0"
-                            material="color: green;"></a-torus>
-                        <a-torus position="0 3 0" radius="0.35" radius-tubular="0.01" rotation="90 45 0"
-                            material="color: darkgreen;"></a-torus>
-                        <a-torus position="0 4 0" radius="0.35" radius-tubular="0.01" rotation="90 90 0"
-                            material="color: green;"></a-torus>
-                    </a-entity>
-
-
-                    <a-entity class="vFarm" position="0 0 3">
-                        <a-sphere position="0 -1 0" radius="1" thetaLength="180" rotation="0 0 0"
-                            color="darkgreen"></a-sphere>
-                        <a-cylinder radius="1.2" height="0.1" position="0 0 0" material="metalness: 0.3"></a-cylinder>
-                        <a-cylinder radius="0.3" height="6" position="0 1 0" material="metalness: 0.3"></a-cylinder>
-                        <a-entity position="0 1.5 0.4" rotation="0 30 0">
-                            <a-plane width="0.3" height="0.6" material="color: green; side: double;"
-                                rotation="45 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 2.5 -0.3" rotation="0 -20 0">
-                            <a-plane width="0.2" height="0.5" material="color: forestgreen; side: double;"
-                                rotation="30 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 3.5 0.2" rotation="0 10 0">
-                            <a-plane width="0.25" height="0.4" material="color: limegreen; side: double;"
-                                rotation="60 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 4 -0.4" rotation="0 -15 0">
-                            <a-plane width="0.3" height="0.7" material="color: seagreen; side: double;"
-                                rotation="50 0 0"></a-plane>
-                        </a-entity>
-                        <a-torus position="0 2 0" radius="0.35" radius-tubular="0.01" rotation="90 0 0"
-                            material="color: green;"></a-torus>
-                        <a-torus position="0 3 0" radius="0.35" radius-tubular="0.01" rotation="90 45 0"
-                            material="color: darkgreen;"></a-torus>
-                        <a-torus position="0 4 0" radius="0.35" radius-tubular="0.01" rotation="90 90 0"
-                            material="color: green;"></a-torus>
-                    </a-entity>
-                    
-                    <a-entity class="vFarm" position = "-3 0 3">
-                        <a-sphere position="0 -1 0" radius="1" thetaLength="180" rotation="0 0 0"
-                            color="darkgreen"></a-sphere>
-                        <a-cylinder radius="1.2" height="0.1" position="0 0 0" material="metalness: 0.3"></a-cylinder>
-                        <a-cylinder radius="0.3" height="6" position="0 1 0" material="metalness: 0.3"></a-cylinder>
-                        <a-entity position="0 1.5 0.4" rotation="0 30 0">
-                            <a-plane width="0.3" height="0.6" material="color: green; side: double;"
-                                rotation="45 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 2.5 -0.3" rotation="0 -20 0">
-                            <a-plane width="0.2" height="0.5" material="color: forestgreen; side: double;"
-                                rotation="30 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 3.5 0.2" rotation="0 10 0">
-                            <a-plane width="0.25" height="0.4" material="color: limegreen; side: double;"
-                                rotation="60 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 4 -0.4" rotation="0 -15 0">
-                            <a-plane width="0.3" height="0.7" material="color: seagreen; side: double;"
-                                rotation="50 0 0"></a-plane>
-                        </a-entity>
-                        <a-torus position="0 2 0" radius="0.35" radius-tubular="0.01" rotation="90 0 0"
-                            material="color: green;"></a-torus>
-                        <a-torus position="0 3 0" radius="0.35" radius-tubular="0.01" rotation="90 45 0"
-                            material="color: darkgreen;"></a-torus>
-                        <a-torus position="0 4 0" radius="0.35" radius-tubular="0.01" rotation="90 90 0"
-                            material="color: green;"></a-torus>
-                    </a-entity>
-
-                    <a-entity class="vFarm" position = "3 0 3">
-                        <a-sphere position="0 -1 0" radius="1" thetaLength="180" rotation="0 0 0"
-                            color="darkgreen"></a-sphere>
-                        <a-cylinder radius="1.2" height="0.1" position="0 0 0" material="metalness: 0.3"></a-cylinder>
-                        <a-cylinder radius="0.3" height="6" position="0 1 0" material="metalness: 0.3"></a-cylinder>
-                        <a-entity position="0 1.5 0.4" rotation="0 30 0">
-                            <a-plane width="0.3" height="0.6" material="color: green; side: double;"
-                                rotation="45 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 2.5 -0.3" rotation="0 -20 0">
-                            <a-plane width="0.2" height="0.5" material="color: forestgreen; side: double;"
-                                rotation="30 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 3.5 0.2" rotation="0 10 0">
-                            <a-plane width="0.25" height="0.4" material="color: limegreen; side: double;"
-                                rotation="60 0 0"></a-plane>
-                        </a-entity>
-                        <a-entity position="0 4 -0.4" rotation="0 -15 0">
-                            <a-plane width="0.3" height="0.7" material="color: seagreen; side: double;"
-                                rotation="50 0 0"></a-plane>
-                        </a-entity>
-                        <a-torus position="0 2 0" radius="0.35" radius-tubular="0.01" rotation="90 0 0"
-                            material="color: green;"></a-torus>
-                        <a-torus position="0 3 0" radius="0.35" radius-tubular="0.01" rotation="90 45 0"
-                            material="color: darkgreen;"></a-torus>
-                        <a-torus position="0 4 0" radius="0.35" radius-tubular="0.01" rotation="90 90 0"
-                            material="color: green;"></a-torus>
-                    </a-entity>
-
-                </a-entity>
-
-            </a-entity>
-
-            <!-- Tunnel 1-5 -->
-            <a-box position="-35 2.5 -50" width="5" height="5" depth="20"
-                material="color: #000000; side: double; opacity: 0.3" rotation="0 0 0">
-            </a-box>
-
-            <!-- Dome 2 (top-right) -->
-            <a-entity id="d2" receiveShadow="true" geometry="primitive: sphere; radius: 5;"
-                material="color: lightgray; side: double;" position="35 1 -80" scale="5 5 5">
-            </a-entity>
-
-            <!-- Tunnel 2-4 -->
-            <a-box position="35 2.5 -50" width="5" height="5" depth="20"
-                material="color: #000000; side: double; opacity: 0.3" rotation="0 0 0">
-            </a-box>
-
-            <!-- Dome 5 (bottom-left) -->
-            <a-entity id="d5" receiveShadow="true" geometry="primitive: sphere; radius: 5;"
-                material="color: lightgray; side: double;" position="-30 0 -30" scale="3 3 3">
-            </a-entity>
-
-            <!-- Tunnel 5-3 -->
-            <a-box position="-15 2.5 -15" width="5" height="5" depth="20"
-                material="color: #000000; side: double; opacity: 0.3" rotation="0 45 0">
-            </a-box>
-
-            <!-- Dome 4 (bottom-right) -->
-            <a-entity id="d4" receiveShadow="true" geometry="primitive: sphere; radius: 5;"
-                material="color: lightgray; side: double;" position="30 0 -30" scale="3 3 3">
-            </a-entity>
-
-            <!-- Tunnel 4-3 -->
-            <a-box position="15 2.5 -15" width="5" height="5" depth="20"
-                material="color: #000000; side: double; opacity: 0.3" rotation="0 -45 0">
-            </a-box>
-        </a-entity>
-
-        <!-- Camera and Controls -->
         <a-entity id="cameraRig">
-            <a-camera id="camera" camera="" position="0 1.6 -50" look-controls wasd-controls="fly"></a-camera>
+            <a-camera id="camera" camera="" position="30 1.6 -10" look-controls wasd-controls="fly"></a-camera>
         </a-entity>
-
-        <!-- (Optional) Red Box for testing -->
-        <!-- <a-box width="2" height="2" depth="2" color="red" position="0 1 0"></a-box> -->
     </a-scene>
 </body>
 
