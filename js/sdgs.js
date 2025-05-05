@@ -1,17 +1,9 @@
 window.addEventListener('load', () => {
   const scene = document.querySelector('a-scene');
 
-
   // Welcome Square / Board
   // Central Square
-  const centralSquare = document.createElement('a-box');
-  centralSquare.setAttribute('position', '0 0.05 0');
-  centralSquare.setAttribute('width', '15');
-  centralSquare.setAttribute('height', '15');
-  centralSquare.setAttribute('depth', '0.1');
-  centralSquare.setAttribute('rotation', '-90 0 0');
-  centralSquare.setAttribute('color', '#cccccc');
-  scene.appendChild(centralSquare);
+  scene.appendChild(createCylinder("0 0 0", 0.1, 7.5, "#cccccc"));
   const welcomeBoard = document.createElement('a-entity');
   welcomeBoard.setAttribute('look-at', '#camera');
   welcomeBoard.setAttribute('class', 'page');
@@ -25,13 +17,21 @@ window.addEventListener('load', () => {
     </header>
   </section>
 `;
-
   scene.appendChild(welcomeBoard);
+
+
+  //Paths
+
+  scene.appendChild(createCylinder("0 0 -20", 0.1, 10, "#cccccc"));
+  scene.appendChild(createCylinder("-20 0 0", 0.1, 10, "#cccccc"));
+  scene.appendChild(createCylinder("20 0 0", 0.1, 5, "#cccccc"));
+
 
   // SDG 1
   const sdg1 = document.createElement('a-entity');
   sdg1.setAttribute('id', 'sdg1');
-  sdg1.setAttribute('position', '-15 0 15');
+  sdg1.setAttribute('position', '-20 0 0');
+  sdg1.setAttribute('rotation', '0 90 0');
 
   const carouselContainer = document.createElement('a-entity');
   carouselContainer.setAttribute('id', 'carouselContainer');
@@ -56,6 +56,24 @@ window.addEventListener('load', () => {
   sphere.setAttribute('radius', '2');
   sphere.setAttribute('color', 'blue');
 
+  const Infopanel1 = document.createElement('a-box');
+  Infopanel1.setAttribute('width', '1.2');
+  Infopanel1.setAttribute('height', '0.05');
+  Infopanel1.setAttribute('depth', '0.8');
+  Infopanel1.setAttribute('color', '#1E90FF');
+  Infopanel1.setAttribute('position', '-1.5 0.6 1.2');
+  Infopanel1.setAttribute('rotation', '45 0 0');
+  Infopanel1.setAttribute('src', './assets/sdgMap1.png');
+  sdg1.appendChild(Infopanel1);
+
+  const Infostand1 = document.createElement('a-box');
+  Infostand1.setAttribute('width', '0.1');
+  Infostand1.setAttribute('height', '0.6');
+  Infostand1.setAttribute('depth', '0.1');
+  Infostand1.setAttribute('color', '#333');
+  Infostand1.setAttribute('position', '-1.5 0.3 1.2');
+  sdg1.appendChild(Infostand1);
+
   sdg1.appendChild(carouselContainer);
   sdg1.appendChild(sphere);
   scene.appendChild(sdg1);
@@ -67,8 +85,27 @@ window.addEventListener('load', () => {
 
   const sdg2 = document.createElement('a-entity');
   sdg2.setAttribute('id', 'sdg2');
-  sdg2.setAttribute('position', '8 0 10');
-  sdg2.setAttribute('rotation', '0 110 0');
+  sdg2.setAttribute('position', '-30 0.1 10');
+  sdg2.setAttribute('rotation', '0 135 0');
+
+
+  const Infopanel2 = document.createElement('a-box');
+  Infopanel2.setAttribute('width', '1.2');
+  Infopanel2.setAttribute('height', '0.05');
+  Infopanel2.setAttribute('depth', '0.8');
+  Infopanel2.setAttribute('color', '#1E90FF');
+  Infopanel2.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel2.setAttribute('rotation', '45 0 0');
+  Infopanel2.setAttribute('src', './assets/sdgMap2.png');
+  sdg2.appendChild(Infopanel2);
+
+  const Infostand2 = document.createElement('a-box');
+  Infostand2.setAttribute('width', '0.1');
+  Infostand2.setAttribute('height', '0.6');
+  Infostand2.setAttribute('depth', '0.1');
+  Infostand2.setAttribute('color', '#333');
+  Infostand2.setAttribute('position', '-4.5 0.3 5.2');
+  sdg2.appendChild(Infostand2);
 
   const trellis = document.createElement('a-entity');
   trellis.setAttribute('id', 'trellis');
@@ -165,7 +202,27 @@ window.addEventListener('load', () => {
   // SDG3
   const sdg3 = document.createElement('a-entity');
   sdg3.setAttribute('id', 'sdg3');
-  sdg3.setAttribute('position', '10 0 -10');
+  sdg3.setAttribute('position', '-30 0 -4');
+
+
+
+  const Infopanel3 = document.createElement('a-box');
+  Infopanel3.setAttribute('width', '1.2');
+  Infopanel3.setAttribute('height', '0.05');
+  Infopanel3.setAttribute('depth', '0.8');
+  Infopanel3.setAttribute('color', '#1E90FF');
+  Infopanel3.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel3.setAttribute('rotation', '45 0 0');
+  Infopanel3.setAttribute('src', './assets/sdgMap3.png');
+  sdg3.appendChild(Infopanel3);
+
+  const Infostand3 = document.createElement('a-box');
+  Infostand3.setAttribute('width', '0.1');
+  Infostand3.setAttribute('height', '0.6');
+  Infostand3.setAttribute('depth', '0.1');
+  Infostand3.setAttribute('color', '#333');
+  Infostand3.setAttribute('position', '-4.5 0.3 5.2');
+  sdg3.appendChild(Infostand3);
 
   const bed = document.createElement('a-box');
   bed.setAttribute('position', '0 0.5 0');
@@ -215,7 +272,27 @@ window.addEventListener('load', () => {
 
   const sdg4 = document.createElement('a-entity');
   sdg4.setAttribute('education-monument', '');
-  sdg4.setAttribute('position', '0 0 -4'); // Same as before, change if needed
+  sdg4.setAttribute('position', '-18 0 -10'); // Same as before, change if needed
+
+
+
+  const Infopanel4 = document.createElement('a-box');
+  Infopanel4.setAttribute('width', '1.2');
+  Infopanel4.setAttribute('height', '0.05');
+  Infopanel4.setAttribute('depth', '0.8');
+  Infopanel4.setAttribute('color', '#1E90FF');
+  Infopanel4.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel4.setAttribute('rotation', '45 0 0');
+  Infopanel4.setAttribute('src', './assets/sdgMap4.png');
+  sdg4.appendChild(Infopanel4);
+
+  const Infostand4 = document.createElement('a-box');
+  Infostand4.setAttribute('width', '0.1');
+  Infostand4.setAttribute('height', '0.6');
+  Infostand4.setAttribute('depth', '0.1');
+  Infostand4.setAttribute('color', '#333');
+  Infostand4.setAttribute('position', '-4.5 0.3 5.2');
+  sdg4.appendChild(Infostand4);
 
   const createRockCluster = (xPos) => {
     const rockGroup = document.createElement('a-entity');
@@ -309,7 +386,28 @@ window.addEventListener('load', () => {
 
   const sdg5 = document.createElement('a-entity');
   sdg5.setAttribute('equality-monument', '');
-  sdg5.setAttribute('position', '-10 0 5');
+  sdg5.setAttribute('position', '-18 0 10');
+  sdg5.setAttribute('rotation', '0 25 0');
+
+
+
+  const Infopanel5 = document.createElement('a-box');
+  Infopanel5.setAttribute('width', '1.2');
+  Infopanel5.setAttribute('height', '0.05');
+  Infopanel5.setAttribute('depth', '0.8');
+  Infopanel5.setAttribute('color', '#1E90FF');
+  Infopanel5.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel5.setAttribute('rotation', '45 0 0');
+  Infopanel5.setAttribute('src', './assets/sdgMap5.png');
+  sdg5.appendChild(Infopanel5);
+
+  const Infostand5 = document.createElement('a-box');
+  Infostand5.setAttribute('width', '0.1');
+  Infostand5.setAttribute('height', '0.6');
+  Infostand5.setAttribute('depth', '0.1');
+  Infostand5.setAttribute('color', '#333');
+  Infostand5.setAttribute('position', '-4.5 0.3 5.2');
+  sdg5.appendChild(Infostand5);
 
   const platform = document.createElement('a-cylinder');
   platform.setAttribute('radius', 1.5);
@@ -348,7 +446,27 @@ window.addEventListener('load', () => {
   // SDG6 
   const sdg6 = document.createElement('a-entity');
   sdg6.setAttribute('id', 'sdg6');
-  sdg6.setAttribute('position', '-4 0 -4');
+  sdg6.setAttribute('position', '0 0 -20');
+
+
+
+  const Infopanel6 = document.createElement('a-box');
+  Infopanel6.setAttribute('width', '1.2');
+  Infopanel6.setAttribute('height', '0.05');
+  Infopanel6.setAttribute('depth', '0.8');
+  Infopanel6.setAttribute('color', '#1E90FF');
+  Infopanel6.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel6.setAttribute('rotation', '45 0 0');
+  Infopanel6.setAttribute('src', './assets/sdgMap6.png');
+  sdg6.appendChild(Infopanel6);
+
+  const Infostand6 = document.createElement('a-box');
+  Infostand6.setAttribute('width', '0.1');
+  Infostand6.setAttribute('height', '0.6');
+  Infostand6.setAttribute('depth', '0.1');
+  Infostand6.setAttribute('color', '#333');
+  Infostand6.setAttribute('position', '-4.5 0.3 5.2');
+  sdg6.appendChild(Infostand6);
 
   const basePool = document.createElement('a-cylinder');
   basePool.setAttribute('radius', '1.5');
@@ -432,8 +550,28 @@ window.addEventListener('load', () => {
 
   const sdg7 = document.createElement('a-entity');
   sdg7.setAttribute('id', 'sdg7');
-  sdg7.setAttribute('position', '0 0 -10');
-  sdg7.setAttribute('rotation', '0 180 0');
+  sdg7.setAttribute('position', '7.07 0 -27.07');
+  sdg7.setAttribute('rotation', '0 135 0');
+
+
+
+  const Infopanel7 = document.createElement('a-box');
+  Infopanel7.setAttribute('width', '1.2');
+  Infopanel7.setAttribute('height', '0.05');
+  Infopanel7.setAttribute('depth', '0.8');
+  Infopanel7.setAttribute('color', '#1E90FF');
+  Infopanel7.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel7.setAttribute('rotation', '45 0 0');
+  Infopanel7.setAttribute('src', './assets/sdgMap7.png');
+  sdg7.appendChild(Infopanel7);
+
+  const Infostand7 = document.createElement('a-box');
+  Infostand7.setAttribute('width', '0.1');
+  Infostand7.setAttribute('height', '0.6');
+  Infostand7.setAttribute('depth', '0.1');
+  Infostand7.setAttribute('color', '#333');
+  Infostand7.setAttribute('position', '-4.5 0.3 5.2');
+  sdg7.appendChild(Infostand7);
 
   const grass = document.createElement('a-box');
   grass.setAttribute('width', '5');
@@ -535,7 +673,28 @@ window.addEventListener('load', () => {
 
   const sdg8 = document.createElement("a-entity");
   sdg8.setAttribute("id", "sdg8");
-  sdg8.setAttribute("position", "-4 1.6 -10");
+  sdg8.setAttribute("position", "-8 0 20");
+  sdg8.setAttribute("rotation", "0 135 0");
+
+
+
+  const Infopanel8 = document.createElement('a-box');
+  Infopanel8.setAttribute('width', '1.2');
+  Infopanel8.setAttribute('height', '0.05');
+  Infopanel8.setAttribute('depth', '0.8');
+  Infopanel8.setAttribute('color', '#1E90FF');
+  Infopanel8.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel8.setAttribute('rotation', '45 0 0');
+  Infopanel8.setAttribute('src', './assets/sdgMap8.png');
+  sdg8.appendChild(Infopanel8);
+
+  const Infostand8 = document.createElement('a-box');
+  Infostand8.setAttribute('width', '0.1');
+  Infostand8.setAttribute('height', '0.6');
+  Infostand8.setAttribute('depth', '0.1');
+  Infostand8.setAttribute('color', '#333');
+  Infostand8.setAttribute('position', '-4.5 0.3 5.2');
+  sdg8.appendChild(Infostand8);
 
   const wall = document.createElement("a-box");
   wall.setAttribute("width", "6");
@@ -647,7 +806,28 @@ window.addEventListener('load', () => {
 
   const sdg9 = document.createElement("a-entity");
   sdg9.setAttribute("id", "sdg9");
-  sdg9.setAttribute("position", "4 0 0");
+  sdg9.setAttribute("position", "8 0 20");
+  sdg9.setAttribute("rotation", "0 -135 0");
+
+
+
+  const Infopanel9 = document.createElement('a-box');
+  Infopanel9.setAttribute('width', '1.2');
+  Infopanel9.setAttribute('height', '0.05');
+  Infopanel9.setAttribute('depth', '0.8');
+  Infopanel9.setAttribute('color', '#1E90FF');
+  Infopanel9.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel9.setAttribute('rotation', '45 0 0');
+  Infopanel9.setAttribute('src', './assets/sdgMap9.png');
+  sdg9.appendChild(Infopanel9);
+
+  const Infostand9 = document.createElement('a-box');
+  Infostand9.setAttribute('width', '0.1');
+  Infostand9.setAttribute('height', '0.6');
+  Infostand9.setAttribute('depth', '0.1');
+  Infostand9.setAttribute('color', '#333');
+  Infostand9.setAttribute('position', '-4.5 0.3 5.2');
+  sdg9.appendChild(Infostand9);
 
   // Podiums
   [
@@ -725,15 +905,30 @@ window.addEventListener('load', () => {
 
   const sdg10 = document.createElement("a-entity");
   sdg10.setAttribute("id", "sdg10");
-  sdg10.setAttribute("position", "4 0 -4");
+  sdg10.setAttribute("position", "0 0.1 15");
+
+
+
+  const Infopanel10 = document.createElement('a-box');
+  Infopanel10.setAttribute('width', '1.2');
+  Infopanel10.setAttribute('height', '0.05');
+  Infopanel10.setAttribute('depth', '0.8');
+  Infopanel10.setAttribute('color', '#1E90FF');
+  Infopanel10.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel10.setAttribute('rotation', '45 0 0');
+  Infopanel10.setAttribute('src', './assets/sdgMap10.png');
+  sdg10.appendChild(Infopanel10);
+
+  const Infostand10 = document.createElement('a-box');
+  Infostand10.setAttribute('width', '0.1');
+  Infostand10.setAttribute('height', '0.6');
+  Infostand10.setAttribute('depth', '0.1');
+  Infostand10.setAttribute('color', '#333');
+  Infostand10.setAttribute('position', '-4.5 0.3 5.2');
+  sdg10.appendChild(Infostand10);
 
   // Base Ground
-  const ground = document.createElement("a-plane");
-  ground.setAttribute("rotation", "-90 0 0");
-  ground.setAttribute("width", "6");
-  ground.setAttribute("height", "6");
-  ground.setAttribute("color", "#d0f0ff");
-  sdg10.appendChild(ground);
+  sdg10.appendChild(createCylinder("0 0 0", 0.1, 2, "#cccccc"));
 
   // Fulcrum
   const fulcrum = document.createElement("a-cone");
@@ -771,7 +966,28 @@ window.addEventListener('load', () => {
   document.querySelector("a-scene").appendChild(sdg10);
 
   // SDG11
-  const sdg11 = createEntity('sdg11', '8 0 0');
+  const sdg11 = createEntity('sdg11', '10 0 -20');
+
+
+  const Infopanel11 = document.createElement('a-box');
+  Infopanel11.setAttribute('width', '1.2');
+  Infopanel11.setAttribute('height', '0.05');
+  Infopanel11.setAttribute('depth', '0.8');
+  Infopanel11.setAttribute('color', '#1E90FF');
+  Infopanel11.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel11.setAttribute('rotation', '45 0 0');
+  Infopanel11.setAttribute('src', './assets/sdgMap11.png');
+  sdg1.appendChild(Infopanel1);
+
+  const Infostand11 = document.createElement('a-box');
+  Infostand11.setAttribute('width', '0.1');
+  Infostand11.setAttribute('height', '0.6');
+  Infostand11.setAttribute('depth', '0.1');
+  Infostand11.setAttribute('color', '#333');
+  Infostand11.setAttribute('position', '-4.5 0.3 5.2');
+  sdg11.appendChild(Infostand11);
+
+  sdg11.setAttribute("rotation", "0 -90 0");
   sdg11.appendChild(createBox('0 0.05 0', 5, 0.1, 5, '#d0e6d5'));
   sdg11.appendChild(createBox('-1.5 0.75 -1.5', 0.8, 1.5, 0.8, '#b0bec5'));
   sdg11.appendChild(createBox('1.2 0.5 -1.2', 0.6, 1.0, 0.6, '#90a4ae'));
@@ -785,7 +1001,27 @@ window.addEventListener('load', () => {
   scene.appendChild(sdg11);
 
   // SDG12
-  const sdg12 = createEntity('sdg12', '8 0 -4');
+  const sdg12 = createEntity('sdg12', '20 0 -6');
+
+
+  const Infopanel12 = document.createElement('a-box');
+  Infopanel12.setAttribute('width', '1.2');
+  Infopanel12.setAttribute('height', '0.05');
+  Infopanel12.setAttribute('depth', '0.8');
+  Infopanel12.setAttribute('color', '#1E90FF');
+  Infopanel12.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel12.setAttribute('rotation', '45 0 0');
+  Infopanel12.setAttribute('src', './assets/sdgMap12.png');
+  sdg12.appendChild(Infopanel12);
+
+  const Infostand12 = document.createElement('a-box');
+  Infostand12.setAttribute('width', '0.1');
+  Infostand12.setAttribute('height', '0.6');
+  Infostand12.setAttribute('depth', '0.1');
+  Infostand12.setAttribute('color', '#333');
+  Infostand12.setAttribute('position', '-4.5 0.3 5.2');
+  sdg12.appendChild(Infostand12);
+
   sdg12.appendChild(createBox('0 0.05 0', 6, 0.1, 4, '#f0f0f0'));
   sdg12.appendChild(createBox('-2 0.75 0', 1.5, 1.5, 1, '#bdbdbd'));
   sdg12.appendChild(createCylinder('-2.5 1.6 0', 0.8, 0.1, '#757575'));
@@ -802,11 +1038,31 @@ window.addEventListener('load', () => {
 
   // SDG13
 
-  const sdg13 = createEntity('sdg13', '8 0.1 -8');
-  sdg13.appendChild(createPlane('0 0 0', '-90 1 0', 5, 5, '#e0f7fa'));
+  const sdg13 = createEntity('sdg13', '7.07 0.1 -12.93');
+
+
+  const Infopanel13 = document.createElement('a-box');
+  Infopanel13.setAttribute('width', '1.2');
+  Infopanel13.setAttribute('height', '0.05');
+  Infopanel13.setAttribute('depth', '0.8');
+  Infopanel13.setAttribute('color', '#1E90FF');
+  Infopanel13.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel13.setAttribute('rotation', '45 0 0');
+  Infopanel3.setAttribute('src', './assets/sdgMap13.png');
+  sdg13.appendChild(Infopanel13);
+
+  const Infostand13 = document.createElement('a-box');
+  Infostand13.setAttribute('width', '0.1');
+  Infostand13.setAttribute('height', '0.6');
+  Infostand13.setAttribute('depth', '0.1');
+  Infostand13.setAttribute('color', '#333');
+  Infostand13.setAttribute('position', '-4.5 0.3 5.2');
+  sdg13.appendChild(Infostand13);
+  scene.appendChild(createCylinder('7.07 0.1 -12.93', 0.1, 3, '#e0f7fa'));
   sdg13.appendChild(createSphere('0 1 0', 0.5, '#4fc3f7'));
   sdg13.appendChild(createSphere('0.1 1.2 0.2', 0.1, '#81c784'));
   sdg13.appendChild(createSphere('-0.2 0.9 -0.1', 0.1, '#a5d6a7'));
+  sdg13.setAttribute("look-at", "#camera");
 
   const protest = document.createElement('a-entity');
   protest.setAttribute('rotation', '0 0 40');
@@ -829,7 +1085,28 @@ window.addEventListener('load', () => {
 
   // SDG 14
 
-  const sdg14 = createEntity('sdg14', '12 0 0');
+  const sdg14 = createEntity('sdg14', '0 0 -30');
+  sdg14.setAttribute("scale", "2 2 2");
+
+
+
+  const Infopanel14 = document.createElement('a-box');
+  Infopanel14.setAttribute('width', '1.2');
+  Infopanel14.setAttribute('height', '0.05');
+  Infopanel14.setAttribute('depth', '0.8');
+  Infopanel14.setAttribute('color', '#1E90FF');
+  Infopanel14.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel14.setAttribute('rotation', '45 0 0');
+  Infopanel14.setAttribute('src', './assets/sdgMap14.png');
+  sdg14.appendChild(Infopanel14);
+
+  const Infostand14 = document.createElement('a-box');
+  Infostand14.setAttribute('width', '0.1');
+  Infostand14.setAttribute('height', '0.6');
+  Infostand14.setAttribute('depth', '0.1');
+  Infostand14.setAttribute('color', '#333');
+  Infostand14.setAttribute('position', '-4.5 0.3 5.2');
+  sdg14.appendChild(Infostand14);
 
   sdg14.appendChild(createRockCluster(-1.6));
   sdg14.appendChild(createRockCluster(1.6));
@@ -854,7 +1131,27 @@ window.addEventListener('load', () => {
   // SDG 15
   const sdg15 = document.createElement('a-entity');
   sdg15.setAttribute('id', 'sdg15');
-  sdg15.setAttribute('position', '-16 0.1 0');
+  sdg15.setAttribute('position', '-10 0.1 -20');
+
+
+
+  const Infopanel15 = document.createElement('a-box');
+  Infopanel15.setAttribute('width', '1.2');
+  Infopanel15.setAttribute('height', '0.05');
+  Infopanel15.setAttribute('depth', '0.8');
+  Infopanel15.setAttribute('color', '#1E90FF');
+  Infopanel15.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel15.setAttribute('rotation', '45 0 0');
+  Infopanel15.setAttribute('src', './assets/sdgMap15.png');
+  sdg15.appendChild(Infopanel15);
+
+  const Infostand15 = document.createElement('a-box');
+  Infostand15.setAttribute('width', '0.1');
+  Infostand15.setAttribute('height', '0.6');
+  Infostand15.setAttribute('depth', '0.1');
+  Infostand15.setAttribute('color', '#333');
+  Infostand15.setAttribute('position', '-4.5 0.3 5.2');
+  sdg15.appendChild(Infostand15);
 
   sdg15.appendChild(createPlane('0 0 0', '-90 0 0', '12', '12', '#81c784'));
 
@@ -881,10 +1178,31 @@ window.addEventListener('load', () => {
 
   // Create SDG 16 (Peace, Justice & Strong Institutions)
 
-  const sdg16 = createEntity("sdg16", "30 0.1 -10");
+  const sdg16 = createEntity("sdg16", "20 0 6");
   sdg16.appendChild(createPlane('-90 0 0', '6', '6', '#e0e0e0'));
 
+
+
+  const Infopanel16 = document.createElement('a-box');
+  Infopanel16.setAttribute('width', '1.2');
+  Infopanel16.setAttribute('height', '0.05');
+  Infopanel16.setAttribute('depth', '0.8');
+  Infopanel16.setAttribute('color', '#1E90FF');
+  Infopanel16.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel16.setAttribute('rotation', '45 0 0');
+  Infopanel16.setAttribute('src', './assets/sdgMap16.png');
+  sdg16.appendChild(Infopanel16);
+
+  const Infostand16 = document.createElement('a-box');
+  Infostand16.setAttribute('width', '0.1');
+  Infostand16.setAttribute('height', '0.6');
+  Infostand16.setAttribute('depth', '0.1');
+  Infostand16.setAttribute('color', '#333');
+  Infostand16.setAttribute('position', '-4.5 0.3 5.2');
+  sdg16.appendChild(Infostand16);
+
   // Scales of Justice
+  sdg16.appendChild(createCylinder('0 0 0', '2', '1', '#cccccc'));
   sdg16.appendChild(createCylinder('0 1 0', '0.05', '2', '#6d4c41'));
   sdg16.appendChild(createBox('0 2 0', '1.5', '0.05', '0.05', '#5d4037'));
   sdg16.appendChild(createCylinder('-0.7 1.6 0', '0.2', '0.05', '#a1887f'));
@@ -901,8 +1219,28 @@ window.addEventListener('load', () => {
 
   // Create SDG 17 (Partnerships for the Goals)
 
-  const sdg17 = createEntity("sdg17", "40 0.1 -10");
+  const sdg17 = createEntity("sdg17", "0 0.1 0");
   sdg17.appendChild(createPlane('-90 0 0', '4', '4', '#e3f2fd'));
+
+
+
+  const Infopanel17 = document.createElement('a-box');
+  Infopanel17.setAttribute('width', '1.2');
+  Infopanel17.setAttribute('height', '0.05');
+  Infopanel17.setAttribute('depth', '0.8');
+  Infopanel17.setAttribute('color', '#1E90FF');
+  Infopanel17.setAttribute('position', '-4.5 0.6 5.2');
+  Infopanel17.setAttribute('rotation', '45 0 0');
+  Infopanel17.setAttribute('src', './assets/sdgMap17.png');
+  sdg17.appendChild(Infopanel7);
+
+  const Infostand17 = document.createElement('a-box');
+  Infostand17.setAttribute('width', '0.1');
+  Infostand17.setAttribute('height', '0.6');
+  Infostand17.setAttribute('depth', '0.1');
+  Infostand17.setAttribute('color', '#333');
+  Infostand17.setAttribute('position', '-4.5 0.3 5.2');
+  sdg17.appendChild(Infostand17);
 
   const ring = createSphere('0 1.2 0', '0.7', '#2196f3');
   ring.setAttribute("material", "color:#2196f3; emissive: #64b5f6; emissiveIntensity: 0.7;")

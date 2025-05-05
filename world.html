@@ -85,27 +85,27 @@
         .carousel-controls button:disabled {
             background-color: #ccc;
         }
+
+        iframe {
+            width: 1500px;
+            height: 800px;
+            border: 1px dotted black;
+        }
+
     </style>
+
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
     <script src="js/sdgs.js" defer></script>
+    <script src="js/map.js" defer></script>
     <script src="js/interactive.js" defer></script>
     <script src="js/CreateModule.js" ></script>
 </head>
 
 <body>
     <a-scene cursor="rayOrigin: mouse">
-        <!----
-        <a-assets>
-            <img id="image1"
-                src="https://images.unsplash.com/photo-1745594618508-6e3abfce30ef?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-            <img id="image2"
-                src="https://images.unsplash.com/photo-1743485237407-e00bfb75163e?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-            <img id="image3"
-                src="https://images.unsplash.com/photo-1743953729837-bc934e81af4f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-        </a-assets>-->
-
+        
         <a-sky color="lightblue"></a-sky>
         <!-- Lighting -->
         <a-light type="directional" position="50 50 50" intensity="0.8" color="#ffffff" castShadow="true"></a-light>
@@ -116,23 +116,13 @@
         <!-- Ground -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="500" height="500" color="darkgreen"></a-plane>
 
-        <!-- Central Square & Welcome Board --
-        <a-box position="0 0.05 0" width="15" height="15" depth="0.1" rotation="-90 0 0" color="#cccccc"></a-box>
-        <a-entity id="treeContainer"></a-entity>
-        <a-entity look-at="#camera" class="page" htmlembed position="0 4 0">
-            <section class="titleBoard">
-                <header>
-                    <h1>WELCOME TO<br>SDGBox</h1>
-                    <p>A visual representation of each country's progress towards the UN's Sustainable Development Goals
-                    </p>
-                </header>
-            </section>
-        </a-entity>-->
-
-        <a-entity id="cameraRig">
-            <a-camera id="camera" camera="" position="30 1.6 -10" look-controls wasd-controls="fly"></a-camera>
+            <a-entity id="cameraRig">
+            <a-camera id="camera" camera="" position="0 1.6 5" look-controls wasd-controls></a-camera>
         </a-entity>
     </a-scene>
+
+    <script src="js/map.js" defer></script>
+
 </body>
 
 </html>
